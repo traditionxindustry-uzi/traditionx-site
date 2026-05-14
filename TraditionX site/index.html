@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TraditionX Industry | Official Store</title>
+    <style>
+        body { margin: 0; font-family: 'Segoe UI', Helvetica, Arial, sans-serif; background: #fff; color: #333; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+        
+        /* Banner Header */
+        .header-banner img { width: 100%; height: auto; display: block; }
+
+        /* Navigation */
+        nav { background: #e62e2e; display: flex; align-items: center; padding: 0 5%; height: 60px; position: sticky; top: 0; z-index: 1000; }
+        .nav-links { display: flex; height: 100%; width: 100%; }
+        .nav-item { position: relative; height: 100%; }
+        .nav-item > a { color: white; padding: 0 20px; font-size: 15px; display: flex; align-items: center; height: 100%; text-decoration: none; transition: background 0.3s; }
+        .nav-item:hover > a { background: #d12727; }
+
+        /* Dropdown */
+        .dropdown { 
+            position: absolute; top: 60px; left: 0; background: white; 
+            min-width: 250px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            display: none; flex-direction: column; border-top: 1px solid #eee;
+        }
+        .nav-item:hover .dropdown { display: flex; }
+        .dropdown a { color: #666; padding: 12px 20px; font-size: 14px; text-decoration: none; border-bottom: 1px solid #f9f9f9; display: flex; justify-content: space-between; align-items: center; }
+        .dropdown a:hover { background: #fdfdfd; color: #e62e2e; }
+
+        /* Slider */
+        .slider-container { width: 100%; height: 450px; background: #f0f0f0; position: relative; overflow: hidden; }
+        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; object-fit: cover; }
+        .slide.active { opacity: 1; }
+
+        /* Content Sections */
+        .container { max-width: 1140px; margin: 40px auto; padding: 0 20px; }
+        h2 { border-left: 4px solid #e62e2e; padding-left: 15px; text-transform: uppercase; margin-bottom: 25px; font-size: 20px; letter-spacing: 1px; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .box { border: 1px solid #eee; padding: 25px; border-radius: 4px; background: #fafafa; }
+        
+        /* PDF Buttons */
+        .pdf-btn { 
+            display: inline-block; padding: 10px 20px; background: #e62e2e; color: white; 
+            text-decoration: none; border-radius: 4px; font-size: 14px; transition: 0.3s;
+            margin-top: 15px;
+        }
+        .pdf-btn:hover { background: #333; }
+
+        /* Footer */
+        footer { background: #1a1a1a; color: #fff; padding: 60px 5% 30px; margin-top: 50px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-links a { color: #aaa; display: block; margin-bottom: 10px; font-size: 14px; text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: #e62e2e; }
+        .pay-logos { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 15px; align-items: center; }
+        .pay-logos img { height: 24px; filter: brightness(0) invert(1); opacity: 0.9; }
+        .pay-logos img.no-filter { filter: none; opacity: 1; height: 20px; }
+
+        @media (max-width: 768px) {
+            .slider-container { height: 250px; }
+            nav { height: auto; padding: 10px; }
+            .nav-links { flex-direction: column; }
+            .nav-item { width: 100%; }
+            .dropdown { position: static; width: 100%; display: block; box-shadow: none; background: #fafafa; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-banner">
+        <img src="banner11.jpg" alt="TraditionX Industry Header">
+    </div>
+
+    <nav>
+        <div class="nav-links">
+            <div class="nav-item"><a href="#">Home</a></div>
+            <div class="nav-item">
+                <a href="#">Products ▾</a>
+                <div class="dropdown">
+                    <a href="catalog.pdf" target="_blank">Full Catalog (PDF)</a>
+                    <a href="options.pdf" target="_blank">Color and Fabric Options (PDF)</a>
+                    <a href="#">Fitness Wear <span>&rsaquo;</span></a>
+                    <a href="#">Sports Wear <span>&rsaquo;</span></a>
+                    <a href="#">Boxing Wear & Gear <span>&rsaquo;</span></a>
+                </div>
+            </div>
+            <div class="nav-item"><a href="#overview">Company Overview</a></div>
+            <div class="nav-item"><a href="#docs">Documents</a></div>
+            <div class="nav-item"><a href="#">Contacts</a></div>
+        </div>
+    </nav>
+
+    <div class="slider-container">
+        <img src="banner1.avif" class="slide active" id="s1" alt="Banner 1">
+        <img src="banner2.avif" class="slide" id="s2" alt="Banner 2">
+    </div>
+
+    <div class="container" id="overview">
+        <h2>Company Overview</h2>
+        <div class="info-grid">
+            <div class="box">
+                <p>TraditionX Industry is a professional manufacturer and exporter specializing in apparel, sportswear, and fitness wear. Based in Sialkot, Pakistan, we are dedicated to providing high-quality precision manufacturing to clients worldwide.</p>
+            </div>
+            <div class="box">
+                <p>Business Type: Manufacturer</p>
+                <p>Location: Sialkot, Punjab, Pakistan</p>
+                <p>Member ID: A-86379 (Sialkot Chamber)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Updated Section from image_767ba2.png -->
+    <div class="container" id="docs">
+        <h2>Catalog & Material Options</h2>
+        <div class="info-grid">
+            <div class="box">
+                <h3>Product Catalog</h3>
+                <p>Download our complete collection of fitness and sportswear products.</p>
+                <a href="catalog.pdf" target="_blank" class="pdf-btn">Download Catalog PDF</a>
+            </div>
+            <div class="box">
+                <h3>Color and Fabric Options</h3>
+                <p>View our available fabric blends (Lycra, Pima Cotton) and color options.</p>
+                <a href="options.pdf" target="_blank" class="pdf-btn">Download Material Options</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h4>TraditionX Industry</h4>
+                <p style="font-size:13px; color:#999;">Manufacturer, Exporter, and Supplier of high-quality apparel.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Social Media</h4>
+                <a href="https://www.facebook.com/share/1DfQrrertE/" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/traditionxindustry?igsh=M2VmcG90eGFiYndw" target="_blank">Instagram</a>
+                <a href="https://www.linkedin.com/company/traditionx-industry/" target="_blank">LinkedIn</a>
+            </div>
+            <div>
+                <h4>Payments</h4>
+                <div class="pay-logos">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                    <img src="https://www.payoneer.com/wp-content/themes/payoneer/assets/images/payoneer-logo-orange.svg" class="no-filter" alt="Payoneer">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let idx = 0;
+        const slides = [document.getElementById('s1'), document.getElementById('s2')];
+        setInterval(() => {
+            if(slides[0] && slides[1]) {
+                slides[idx].classList.remove('active');
+                idx = (idx + 1) % slides.length;
+                slides[idx].classList.add('active');
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
