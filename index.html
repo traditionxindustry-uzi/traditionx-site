@@ -34,49 +34,53 @@
         .action-box:hover { border-color: #e62e2e; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .action-box h3 { color: #e62e2e; margin: 0 0 10px 0; font-size: 18px; text-transform: uppercase; }
 
-        /* WhatsApp Button */
-        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 1001; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; text-decoration: none; }
-
-        /* AI Chatbot */
-        .chatbot-container { position: fixed; bottom: 90px; right: 20px; width: 320px; background: white; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.2); display: none; flex-direction: column; z-index: 1001; border: 1px solid #e62e2e; overflow: hidden; }
-        .chatbot-header { background: #e62e2e; color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
-        .chatbot-messages { height: 320px; padding: 15px; overflow-y: auto; font-size: 13px; background: #f9f9f9; }
-        .bot-msg { background: #fff; padding: 10px; border-radius: 10px 10px 10px 0; margin-bottom: 12px; border: 1px solid #eee; line-height: 1.4; }
-        .user-msg { background: #e62e2e; color: white; padding: 10px; border-radius: 10px 10px 0 10px; margin-bottom: 12px; align-self: flex-end; text-align: right; margin-left: 20%; }
-        .chatbot-input { border-top: 1px solid #eee; padding: 10px; display: flex; gap: 5px; }
-        .chatbot-input input { flex: 1; border: 1px solid #ddd; padding: 8px; border-radius: 20px; outline: none; }
-        .chatbot-toggle { position: fixed; bottom: 20px; right: 95px; background: #e62e2e; color: white; padding: 12px 25px; border-radius: 50px; cursor: pointer; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); z-index: 1001; font-weight: bold; }
-
-        /* General Layout */
+        /* Page Content Visibility */
         .container { max-width: 1140px; margin: 40px auto; padding: 0 20px; }
         #company-overview-page { display: none; }
         .metrics-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px; }
-        .metrics-table td { padding: 10px; border-bottom: 1px solid #eee; }
+        .metrics-table td { padding: 8px; border-bottom: 1px solid #eee; }
+        .metrics-table td:first-child { font-weight: bold; color: #e62e2e; width: 45%; }
+
+        /* Floating Tools */
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 1001; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+        .chatbot-toggle { position: fixed; bottom: 20px; right: 95px; background: #e62e2e; color: white; padding: 12px 25px; border-radius: 50px; cursor: pointer; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); z-index: 1001; font-weight: bold; }
+        .chatbot-container { position: fixed; bottom: 90px; right: 20px; width: 320px; background: white; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.2); display: none; flex-direction: column; z-index: 1001; border: 1px solid #e62e2e; overflow: hidden; }
+        .chatbot-header { background: #e62e2e; color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        .chatbot-messages { height: 320px; padding: 15px; overflow-y: auto; font-size: 13px; background: #f9f9f9; display: flex; flex-direction: column; }
+        .bot-msg { background: #fff; padding: 10px; border-radius: 10px 10px 10px 0; margin-bottom: 12px; border: 1px solid #eee; }
+        .user-msg { background: #e62e2e; color: white; padding: 10px; border-radius: 10px 10px 0 10px; margin-bottom: 12px; align-self: flex-end; }
+        .chatbot-input { border-top: 1px solid #eee; padding: 10px; display: flex; gap: 5px; }
+        .chatbot-input input { flex: 1; border: 1px solid #ddd; padding: 8px; border-radius: 20px; outline: none; }
+
+        /* Slider */
         .slider-container { width: 100%; height: 450px; background: #f0f0f0; position: relative; overflow: hidden; }
         .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; object-fit: cover; }
         .slide.active { opacity: 1; }
+
+        /* Footer */
         footer { background: #1a1a1a; color: #fff; padding: 60px 5% 30px; margin-top: 50px; }
-        .pay-logos img { height: 22px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .social-icons { display: flex; gap: 15px; margin-top: 15px; }
+        .social-icons img { width: 30px; height: 30px; transition: 0.3s; }
+        .social-icons img:hover { transform: scale(1.1); }
+        .pay-logos img { height: 22px; margin-right: 15px; }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/YOUR_PHONE_NUMBER" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/923110796664" class="whatsapp-float" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WhatsApp">
     </a>
 
-    <div class="chatbot-toggle" onclick="toggleChat()">Chat with AI</div>
+    <div class="chatbot-toggle" onclick="toggleChat()">AI Assistant</div>
     <div class="chatbot-container" id="chatbot">
-        <div class="chatbot-header">
-            <span>TX Manufacturing AI</span>
-            <span style="cursor:pointer" onclick="toggleChat()">×</span>
-        </div>
-        <div id="chat-msgs" class="chatbot-messages" style="display: flex; flex-direction: column;">
-            <div class="bot-msg">Welcome! I can help with product info and manufacturing FAQs. (Try asking about "soccer uniforms")</div>
+        <div class="chatbot-header"><span>TX Assistant</span><span onclick="toggleChat()" style="cursor:pointer">×</span></div>
+        <div id="chat-msgs" class="chatbot-messages">
+            <div class="bot-msg">Hello! I can answer questions about our manufacturing. Ask about "siccer" or "MOQ".</div>
         </div>
         <div class="chatbot-input">
-            <input type="text" id="chat-input" placeholder="Ask about manufacturing..." onkeypress="if(event.key==='Enter') sendMessage()">
-            <button onclick="sendMessage()" style="background: #e62e2e; color: white; border: none; padding: 5px 15px; border-radius: 20px; cursor: pointer;">Send</button>
+            <input type="text" id="chat-input" placeholder="Ask a question..." onkeypress="if(event.key==='Enter') sendMessage()">
+            <button onclick="sendMessage()" style="background:#e62e2e; color:white; border:none; padding:5px 15px; border-radius:20px; cursor:pointer;">Send</button>
         </div>
     </div>
 
@@ -90,15 +94,15 @@
                 <div class="mega-menu">
                     <div class="menu-column">
                         <h3>Fitness Wear (375)</h3>
-                        <ul><li>Gym Shorts (14)</li><li>Crop Tops (10)</li><li>Yoga Sets (51)</li></ul>
+                        <ul><li>Gym Shorts (14)</li><li>Yoga Set (51)</li><li>Leggings (69)</li></ul>
                     </div>
                     <div class="menu-column">
                         <h3>Sports Wear (431)</h3>
-                        <ul><li>Soccer Uniforms (101)</li><li>Basketball (88)</li><li>Rugby (20)</li></ul>
+                        <ul><li>Soccer Uniform (101)</li><li>Basketball (88)</li><li>American Football (111)</li></ul>
                     </div>
                     <div class="menu-column">
                         <h3>Apparel</h3>
-                        <ul><li>Puffer Jackets (40)</li><li>Hoodies (381)</li><li>Jackets (419)</li></ul>
+                        <ul><li>Hoodies (381)</li><li>Jackets (419)</li><li>Tracksuits (18)</li></ul>
                     </div>
                 </div>
             </div>
@@ -113,7 +117,7 @@
             <img src="banner2.avif" class="slide" id="s2" alt="B2">
         </div>
         <div class="action-blocks">
-            <a href="catalog.pdf" target="_blank" class="action-box"><h3>View Catalog</h3><p>Explore our complete range.</p></a>
+            <a href="catalog.pdf" target="_blank" class="action-box"><h3>View Catalog</h3><p>Explore our complete range of apparel.</p></a>
             <a href="options.pdf" target="_blank" class="action-box"><h3>Color Book & Fabric Options</h3><p>View our available blends and shades.</p></a>
         </div>
     </div>
@@ -121,19 +125,51 @@
     <div id="company-overview-page" class="container">
         <h2>Company Overview</h2>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
-            <img src="image1.jpeg" alt="Machine" style="width: 100%; border-radius: 4px;">
+            <img src="image1.jpeg" alt="Manufacturing" style="width: 100%; border-radius: 4px;">
             <img src="image2.jpg" alt="Labour" style="width: 100%; border-radius: 4px;">
         </div>
-        <p><strong>TraditionX Industry</strong> is a top-tier manufacturer in Sialkot, specializing in custom apparel. <strong>Contact Mr. Huzaifa</strong> for professional manufacturing inquiries.</p>
+        
+        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px;">
+            <div>
+                <h3>About TraditionX Industry</h3>
+                <p>TraditionX Industry is a professional manufacturer and exporter specializing in all kinds of sportswear, fitness wear, and casual clothing apparel. As an experienced OEM/ODM provider, we are dedicated to delivering high-quality products to clients around the globe.</p>
+                <p>Our commitment to precision manufacturing, customer satisfaction, and innovation has made us a trusted partner in the global apparel industry. With a skilled team of 101–200 professionals and advanced production facilities spanning up to 30,000 square meters, we ensure top-tier quality and reliable service across every order.</p>
+                <p style="background:#f9f9f9; padding: 15px; border-left: 4px solid #e62e2e; font-weight: bold;">
+                    CEO Muhammad Huzaifa Mudassar: "We have a ton of experience in this industry. Contact me for custom manufacturing details and inquiries!"
+                </p>
+            </div>
+            <div style="background: #fafafa; padding: 20px; border: 1px solid #eee;">
+                <h3 style="font-size:16px; margin:0 0 10px 0;">Business Metrics</h3>
+                <table class="metrics-table">
+                    <tr><td>Annual Revenue</td><td>US$5M - US$10M</td></tr>
+                    <tr><td>Production Lines</td><td>5 Dedicated Lines</td></tr>
+                    <tr><td>Lead Time</td><td>Average 12 Days</td></tr>
+                    <tr><td>Supplier Index</td><td>4.3/5 Satisfied</td></tr>
+                    <tr><td>Response Rate</td><td>100% (&le;1h)</td></tr>
+                    <tr><td>Global Reach</td><td>North America (30%), Europe, Oceania</td></tr>
+                </table>
+            </div>
+        </div>
     </div>
 
     <footer>
         <div class="footer-grid">
-            <div><h4>TraditionX Industry</h4><p style="font-size:13px; color:#999;">Manufacturer & Exporter.</p></div>
-            <div class="pay-logos">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Payoneer_logo.svg" alt="Payoneer">
+            <div>
+                <h4>TraditionX Industry</h4>
+                <p style="font-size:13px; color:#999;">Manufacturer, Exporter, and Supplier of high-quality apparel.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/1DfQrrertE/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="FB"></a>
+                    <a href="https://www.instagram.com/traditionxindustry?igsh=M2VmcG90eGFiYndw" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="IG"></a>
+                    <a href="https://www.linkedin.com/company/traditionx-industry/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="IN"></a>
+                </div>
+            </div>
+            <div>
+                <h4>Payments</h4>
+                <div class="pay-logos">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Payoneer_logo.svg" alt="Payoneer">
+                </div>
             </div>
         </div>
     </footer>
@@ -143,59 +179,29 @@
             document.getElementById('home-page').style.display = (p === 'home') ? 'block' : 'none';
             document.getElementById('company-overview-page').style.display = (p === 'overview') ? 'block' : 'none';
         }
-
         function toggleChat() {
             const c = document.getElementById('chatbot');
             c.style.display = (c.style.display === 'flex') ? 'none' : 'flex';
         }
-
-        const knowledge = {
-            "soccer": "We manufacture professional Soccer Uniforms with moisture-wicking fabric and custom sublimation. We have 101 designs available.",
-            "hoodie": "Our Hoodies (381 styles) use premium fleece and cotton blends, available with puff printing or embroidery.",
-            "moq": "Our Minimum Order Quantity (MOQ) depends on the product, but usually starts at 30-50 pieces per design.",
-            "time": "Average lead time for production is 12 days after sample approval.",
-            "fabric": "We offer Pima cotton, Lycra, Polyester mesh, and specialized fitness blends. Check our Color Book (options.pdf) for more."
-        };
-
         function sendMessage() {
             const input = document.getElementById('chat-input');
             const msg = input.value.toLowerCase();
             if(!msg) return;
-
             addMsg(input.value, 'user-msg');
             input.value = '';
-
-            let response = "I'm sorry, I don't have details on that. Please contact Mr. Huzaifa for specific manufacturing quotes.";
-            
-            // Correction and logic
-            if (msg.includes("siccer") || msg.includes("soccer")) {
-                response = (msg.includes("siccer") ? "Did you mean 'soccer'? " : "") + knowledge.soccer;
-            } else if (msg.includes("hudi") || msg.includes("hoodie")) {
-                response = (msg.includes("hudi") ? "Did you mean 'hoodie'? " : "") + knowledge.hoodie;
-            } else if (msg.includes("moq") || msg.includes("quantity")) {
-                response = knowledge.moq;
-            } else if (msg.includes("fast") || msg.includes("time") || msg.includes("days")) {
-                response = knowledge.time;
-            }
-
+            let response = "Please contact CEO Muhammad Huzaifa Mudassar via WhatsApp for specific quotes.";
+            if(msg.includes("siccer") || msg.includes("soccer")) response = "Yes, we specialize in Soccer Uniforms (101 designs) with 100% custom sublimation.";
+            if(msg.includes("moq")) response = "Our MOQ usually starts from 30-50 pieces per design.";
             setTimeout(() => addMsg(response, 'bot-msg'), 500);
         }
-
-        function addMsg(text, type) {
-            const div = document.createElement('div');
-            div.className = type;
-            div.innerText = text;
-            document.getElementById('chat-msgs').appendChild(div);
+        function addMsg(t, c) {
+            const d = document.createElement('div'); d.className = c; d.innerText = t;
+            document.getElementById('chat-msgs').appendChild(d);
             document.getElementById('chat-msgs').scrollTop = document.getElementById('chat-msgs').scrollHeight;
         }
-
         let idx = 0;
         const slides = [document.getElementById('s1'), document.getElementById('s2')];
-        setInterval(() => {
-            slides[idx].classList.remove('active');
-            idx = (idx + 1) % slides.length;
-            slides[idx].classList.add('active');
-        }, 5000);
+        setInterval(() => { slides[idx].classList.remove('active'); idx = (idx+1)%slides.length; slides[idx].classList.add('active'); }, 5000);
     </script>
 </body>
 </html>
