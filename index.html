@@ -71,7 +71,7 @@
             nav { height: 50px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 0 10px; }
             .nav-links { flex-direction: row; white-space: nowrap; justify-content: flex-start; }
             .nav-item > a { padding: 0 15px; font-size: 14px; }
-            .mega-menu { display: none !important; } /* Mega menu usually hidden on mobile to avoid layout breaking */
+            .mega-menu { display: none !important; }
             .action-blocks { grid-template-columns: 1fr; }
             .overview-grid { grid-template-columns: 1fr; }
             .slider-container { height: 220px; }
@@ -129,6 +129,7 @@
         <div class="slider-container">
             <img src="banner1.avif" class="slide active" id="s1" alt="B1">
             <img src="banner2.avif" class="slide" id="s2" alt="B2">
+            <img src="banner3.avif" class="slide" id="s3" alt="B3">
         </div>
         <div class="action-blocks">
             <a href="catalog.pdf" target="_blank" class="action-box"><h3>View Catalog</h3><p>Complete range of premium apparel.</p></a>
@@ -220,9 +221,15 @@
             const d = document.createElement('div'); d.className = c; d.innerText = t;
             const b = document.getElementById('chat-msgs'); b.appendChild(d); b.scrollTop = b.scrollHeight;
         }
+
+        // Slider Logic: Cycles 1, 2, 3 every 3 seconds
         let idx = 0;
-        const slides = [document.getElementById('s1'), document.getElementById('s2')];
-        setInterval(() => { slides[idx].classList.remove('active'); idx = (idx+1)%slides.length; slides[idx].classList.add('active'); }, 5000);
+        const slides = [document.getElementById('s1'), document.getElementById('s2'), document.getElementById('s3')];
+        setInterval(() => { 
+            slides[idx].classList.remove('active'); 
+            idx = (idx + 1) % slides.length; 
+            slides[idx].classList.add('active'); 
+        }, 3000); 
     </script>
 </body>
 </html>
