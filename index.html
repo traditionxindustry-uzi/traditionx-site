@@ -44,7 +44,8 @@
 
         /* Floating Tools */
         .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 1001; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; text-decoration: none; }
-        .chatbot-toggle { position: fixed; bottom: 20px; right: 95px; background: #e62e2e; color: white; padding: 12px 25px; border-radius: 50px; cursor: pointer; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); z-index: 1001; font-weight: bold; }
+        .chatbot-toggle { position: fixed; bottom: 20px; right: 95px; background: #e62e2e; color: white; padding: 0; border-radius: 50px; cursor: pointer; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); z-index: 1001; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .chatbot-toggle img { width: 100%; height: 100%; object-fit: cover; }
         .chatbot-container { position: fixed; bottom: 90px; right: 20px; width: 320px; background: white; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.2); display: none; flex-direction: column; z-index: 1001; border: 1px solid #e62e2e; overflow: hidden; }
         .chatbot-header { background: #e62e2e; color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
         .chatbot-messages { height: 320px; padding: 15px; overflow-y: auto; font-size: 13px; background: #f9f9f9; display: flex; flex-direction: column; }
@@ -76,7 +77,7 @@
             .overview-grid { grid-template-columns: 1fr; }
             .slider-container { height: 220px; }
             .chatbot-container { width: 90%; right: 5%; bottom: 80px; }
-            .chatbot-toggle { left: 20px; bottom: 20px; right: auto; font-size: 13px; }
+            .chatbot-toggle { left: 20px; bottom: 20px; right: auto; }
         }
     </style>
 </head>
@@ -86,7 +87,10 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WhatsApp">
     </a>
 
-    <div class="chatbot-toggle" onclick="toggleChat()">AI Expert</div>
+    <div class="chatbot-toggle" onclick="toggleChat()">
+        <img src="a1.png" alt="AI Bot">
+    </div>
+
     <div class="chatbot-container" id="chatbot">
         <div class="chatbot-header"><span>TraditionX Assistant</span><span onclick="toggleChat()" style="cursor:pointer">×</span></div>
         <div id="chat-msgs" class="chatbot-messages">
@@ -222,7 +226,6 @@
             const b = document.getElementById('chat-msgs'); b.appendChild(d); b.scrollTop = b.scrollHeight;
         }
 
-        // Slider Logic: Cycles 1, 2, 3 every 3 seconds
         let idx = 0;
         const slides = [document.getElementById('s1'), document.getElementById('s2'), document.getElementById('s3')];
         setInterval(() => { 
