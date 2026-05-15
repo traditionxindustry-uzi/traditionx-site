@@ -33,8 +33,15 @@
         .page-section { display: none; }
         .page-section.active { display: block; }
 
-        /* Integrated Catalog Viewer */
-        .catalog-viewer { width: 100%; height: 900px; border: none; border-radius: 8px; background: #fff; }
+        /* Catalog Grid Styles */
+        .catalog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
+        .catalog-card { background: #dadde2; padding: 25px; border-radius: 8px; border-bottom: 4px solid var(--primary-red); text-align: center; transition: 0.3s; }
+        .catalog-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .catalog-card h3 { color: var(--primary-red); margin-top: 0; text-transform: uppercase; font-size: 18px; }
+        .catalog-card p { font-size: 14px; color: #444; margin-bottom: 0; }
+
+        /* PDF Viewer Container */
+        .pdf-viewer-container { width: 100%; height: 85vh; margin: 20px 0; border-radius: 8px; overflow: hidden; border: 1px solid #ccc; background: #fff; }
 
         /* Products Page */
         .product-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; }
@@ -89,7 +96,7 @@
             .product-grid, .overview-grid, .contact-grid { grid-template-columns: 1fr; }
             .chatbot-toggle { left: 20px; right: auto; width: 60px; height: 60px; }
             .chatbot-box { width: 90%; left: 5%; }
-            .catalog-viewer { height: 500px; }
+            .pdf-viewer-container { height: 60vh; }
         }
     </style>
 </head>
@@ -136,11 +143,9 @@
             <p>Export-quality garments from the heart of Sialkot. We specialize in OEM/ODM services for global brands.</p>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; text-align: left;">
-                <div onclick="showPage('catalog')" style="text-decoration: none; color: inherit;">
-                    <div style="background: #dadde2; border: 2px dashed var(--primary-red); padding: 20px; border-radius: 6px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" onmouseover="this.style.background='#cfd2d7'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='#dadde2'; this.style.transform='translateY(0)';">
-                        <h4 style="margin: 0 0 8px 0; color: var(--primary-red); font-size: 16px; display: flex; align-items: center; gap: 8px;">📁 Product Catalog</h4>
-                        <p style="margin: 0; font-size: 13px; color: #444; line-height: 1.4;">View our comprehensive export catalog featuring modern design configurations and structures directly on our site.</p>
-                    </div>
+                <div onclick="showPage('catalog')" style="background: #dadde2; border: 2px dashed var(--primary-red); padding: 20px; border-radius: 6px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" onmouseover="this.style.background='#cfd2d7'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='#dadde2'; this.style.transform='translateY(0)';">
+                    <h4 style="margin: 0 0 8px 0; color: var(--primary-red); font-size: 16px; display: flex; align-items: center; gap: 8px;">📁 Product Catalog</h4>
+                    <p style="margin: 0; font-size: 13px; color: #444; line-height: 1.4;">View our full interactive export catalog online. Browse page by page through our latest collections.</p>
                 </div>
                 <a href="options.pdf" download style="text-decoration: none; color: inherit;">
                     <div style="background: #dadde2; border: 2px dashed #333; padding: 20px; border-radius: 6px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" onmouseover="this.style.background='#cfd2d7'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='#dadde2'; this.style.transform='translateY(0)';">
@@ -153,7 +158,7 @@
     </div>
 
     <div id="catalog" class="page-section container">
-        <h2 style="border-bottom:2px solid var(--primary-red); padding-bottom:10px; text-align: center;">Product Catalog</h2>
+        <h2 style="border-bottom:2px solid var(--primary-red); padding-bottom:10px; text-align: center;">Interactive Product Catalog</h2>
         
         <div style="display: flex; justify-content: space-around; flex-wrap: wrap; background: #dadde2; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
             <span style="font-weight: bold; color: var(--primary-red);">✓ Premium Quality</span>
@@ -162,7 +167,36 @@
             <span style="font-weight: bold; color: var(--primary-red);">✓ Fast Shipment</span>
         </div>
 
-        <iframe src="catalog.pdf" class="catalog-viewer"></iframe>
+        <div class="pdf-viewer-container">
+            <iframe src="catalog.pdf#toolbar=0" width="100%" height="100%" style="border: none;"></iframe>
+        </div>
+
+        <div class="catalog-grid">
+            <div class="catalog-card">
+                <h3>Soccer Uniforms</h3>
+                <p>100% Polyester Dri-Fit with Sublimation or Embroidery.</p>
+            </div>
+            <div class="catalog-card">
+                <h3>American Football</h3>
+                <p>Sublimated & Tackle Twill designs for professional teams.</p>
+            </div>
+            <div class="catalog-card">
+                <h3>Gym & Active Wear</h3>
+                <p>Compression sets, Gym shirts, and singlets.</p>
+            </div>
+            <div class="catalog-card">
+                <h3>Casual Wear</h3>
+                <p>Tracksuits, Hoodies, Polo Shirts, and Sweatshirts.</p>
+            </div>
+            <div class="catalog-card">
+                <h3>Baseball & Basketball</h3>
+                <p>Custom team kits with high-quality numbering and logos.</p>
+            </div>
+            <div class="catalog-card">
+                <h3>MMA & Boxing</h3>
+                <p>Durable shorts, rash guards, and training gear.</p>
+            </div>
+        </div>
         
         <div style="text-align: center; margin-top: 40px;">
             <button onclick="showPage('contact')" style="background:var(--primary-red); color:white; border:none; padding:15px 30px; font-weight:bold; cursor:pointer; border-radius:5px;">Contact for Wholesale Pricing</button>
@@ -221,7 +255,7 @@
                 <a onclick="showPage('catalog')">Products</a>
                 <a onclick="showPage('overview')">Company Overview</a>
                 <a onclick="showPage('contact')">Contacts</a>
-                <a onclick="showPage('catalog')" style="display: block; margin-top: 5px;">Product Catalog</a>
+                <a onclick="showPage('catalog')" style="display: block; margin-top: 5px;">View Online Catalog</a>
                 <a href="options.pdf" download style="display: block; margin-top: 5px;">Fabric Blend Options</a>
             </div>
             <div>
