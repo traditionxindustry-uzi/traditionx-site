@@ -16,10 +16,9 @@
         .nav-item > a { color: white; padding: 0 20px; font-size: 15px; display: flex; align-items: center; height: 100%; text-decoration: none; transition: background 0.3s; cursor: pointer; }
         .nav-item:hover > a { background: #d12727; }
 
-        /* Mobile Menu Button (Hidden on Desktop) */
         .mobile-menu-btn { display: none; color: white; font-size: 24px; cursor: pointer; background: none; border: none; padding: 10px; }
 
-        /* Mega Menu (Desktop) */
+        /* Mega Menu */
         .mega-menu { 
             position: absolute; top: 60px; left: -100px; background: white; 
             min-width: 950px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
@@ -32,7 +31,7 @@
         .menu-column ul li { font-size: 12px; color: #666; padding: 3px 0; cursor: pointer; }
         .menu-column ul li:hover { color: #e62e2e; }
 
-        /* Product Detail Page Styles */
+        /* Product Detail */
         #product-detail-page { display: none; padding-top: 40px; }
         .product-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
         .image-viewer { position: relative; width: 100%; height: 500px; border: 1px solid #eee; overflow: hidden; background: #fff; cursor: crosshair; }
@@ -41,78 +40,60 @@
         .zoom-result { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-repeat: no-repeat; display: none; pointer-events: none; z-index: 10; }
         .image-viewer:hover .zoom-result { display: block; }
         .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.3); color: white; border: none; padding: 15px 10px; cursor: pointer; z-index: 11; font-weight: bold; }
-        .prev-btn { left: 0; border-radius: 0 4px 4px 0; }
-        .next-btn { right: 0; border-radius: 4px 0 0 4px; }
-
-        .product-info h1 { font-size: 24px; margin-bottom: 10px; color: #222; }
-        .price-box { background: #f7f7f7; padding: 15px; border-radius: 4px; margin-bottom: 20px; }
-        .price-item { display: flex; justify-content: space-between; margin-bottom: 5px; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
-        .price-val { font-weight: bold; color: #e62e2e; }
-        .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 14px; margin-top: 20px; }
-        .spec-item { border-bottom: 1px solid #eee; padding: 8px 0; }
-        .spec-label { font-weight: bold; color: #666; }
+        .prev-btn { left: 0; } .next-btn { right: 0; }
 
         /* Action Blocks */
         .action-blocks { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1140px; margin: 20px auto; padding: 0 20px; }
         .action-box { background: #fafafa; border: 1px solid #eee; padding: 30px; text-align: center; border-radius: 4px; transition: 0.3s; text-decoration: none; color: inherit; }
-        .action-box:hover { border-color: #e62e2e; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .action-box h3 { color: #e62e2e; margin: 0 0 10px 0; font-size: 18px; text-transform: uppercase; }
+        .action-box:hover { border-color: #e62e2e; transform: translateY(-3px); }
+
+        /* Overview & Contact Sections */
+        .container { max-width: 1140px; margin: 40px auto; padding: 0 20px; }
+        .overview-grid, .contact-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; }
+        .metrics-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        .metrics-table td { padding: 8px; border-bottom: 1px solid #eee; }
+        .contact-card { background: #f9f9f9; padding: 20px; border-radius: 8px; border-left: 5px solid #e62e2e; margin-bottom: 15px; }
 
         /* Floating Tools */
         .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 1001; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; text-decoration: none; }
         .chatbot-toggle { position: fixed; bottom: 20px; right: 95px; cursor: pointer; z-index: 1001; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; animation: bounce 2s infinite ease-in-out; background: transparent; border: none; }
-        .chatbot-toggle img { width: 100%; height: auto; }
+        .chatbot-toggle img { width: 100%; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        .chatbot-container { position: fixed; bottom: 100px; right: 20px; width: 320px; background: white; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.2); display: none; flex-direction: column; z-index: 1001; border: 1px solid #e62e2e; overflow: hidden; }
-
-        /* Home Slider */
+        /* Slider */
         .slider-container { width: 100%; height: 450px; background: #f0f0f0; position: relative; overflow: hidden; cursor: pointer; }
-        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; object-fit: cover; }
+        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease; object-fit: cover; }
         .slide.active { opacity: 1; }
 
         /* Footer */
         footer { background: #1a1a1a; color: #fff; padding: 60px 5% 30px; margin-top: 50px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
-        .pay-logos { display: flex; align-items: center; gap: 20px; margin-top: 15px; }
-        .pay-logos img { height: 35px; filter: grayscale(0); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .footer-nav ul { list-style: none; padding: 0; }
+        .footer-nav li { margin-bottom: 8px; cursor: pointer; color: #bbb; transition: 0.3s; }
+        .footer-nav li:hover { color: #e62e2e; }
+        .social-icons { display: flex; gap: 15px; margin: 15px 0; }
+        .social-icons img { width: 32px; filter: invert(0); }
+        .pay-logos { display: flex; align-items: center; gap: 20px; margin-top: 20px; }
+        .pay-logos img { height: 30px; }
 
-        /* MOBILE STYLES */
+        /* Mobile Adjustments */
         @media (max-width: 768px) {
             .mobile-menu-btn { display: block; }
-            .nav-links { 
-                display: none; position: absolute; top: 60px; left: 0; width: 100%; 
-                background: #e62e2e; flex-direction: column; height: auto; padding-bottom: 20px;
-            }
+            .nav-links { display: none; position: absolute; top: 60px; left: 0; width: 100%; background: #e62e2e; flex-direction: column; }
             .nav-links.active { display: flex; }
-            .nav-item { height: auto; border-bottom: 1px solid rgba(255,255,255,0.1); }
-            .nav-item > a { padding: 15px 5%; width: 90%; }
-            .mega-menu { 
-                position: static; min-width: 100%; display: none !important; 
-                grid-template-columns: 1fr; padding: 0 5% 15px; background: #d12727; box-shadow: none;
-            }
-            .nav-item:hover .mega-menu, .nav-item.mobile-active .mega-menu { display: block !important; }
-            .menu-column h3 { color: white; border-bottom: 1px solid rgba(255,255,255,0.2); }
-            .menu-column ul li { color: rgba(255,255,255,0.8); font-size: 14px; padding: 10px 0; }
-            
+            .mega-menu { position: static; min-width: 100%; display: none !important; grid-template-columns: 1fr; background: #d12727; }
+            .nav-item.mobile-active .mega-menu { display: block !important; }
+            .overview-grid, .contact-grid { grid-template-columns: 1fr; }
             .slider-container, .image-viewer { height: 250px; }
-            .product-container { grid-template-columns: 1fr; }
-            .chatbot-toggle { left: 20px; bottom: 20px; right: auto; width: 60px; height: 60px; }
-            .pay-logos { flex-wrap: wrap; }
         }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/923110796664" class="whatsapp-float" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WhatsApp">
-    </a>
+    <a href="https://wa.me/923110796664" class="whatsapp-float" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WA"></a>
+    <div class="chatbot-toggle" onclick="toggleChat()"><img src="a1.png" alt="AI"></div>
 
-    <div class="chatbot-toggle" onclick="toggleChat()">
-        <img src="a1.png" alt="AI Bot">
-    </div>
-
-    <div class="header-banner"><img src="banner11.jpg" alt="TraditionX Industry"></div>
+    <div class="header-banner"><img src="banner11.jpg" alt="TraditionX"></div>
 
     <nav>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()">&#9776;</button>
@@ -136,7 +117,7 @@
                 </div>
             </div>
             <div class="nav-item"><a onclick="showPage('overview')">Company Overview</a></div>
-            <div class="nav-item"><a href="#">Contacts</a></div>
+            <div class="nav-item"><a onclick="showPage('contact')">Contact Us</a></div>
         </div>
     </nav>
 
@@ -148,7 +129,7 @@
         </div>
         <div class="action-blocks">
             <a href="catalog.pdf" target="_blank" class="action-box"><h3>View Catalog</h3><p>Complete range of premium apparel.</p></a>
-            <a href="options.pdf" target="_blank" class="action-box"><h3>Color Book & Fabric</h3><p>Available blends and shades.</p></a>
+            <a href="options.pdf" target="_blank" class="action-box"><h3>Color Book</h3><p>Available blends and shades.</p></a>
         </div>
     </div>
 
@@ -167,13 +148,12 @@
             <div class="product-info">
                 <h1>Gym casual shorts fashion gym Wholesale Customized Style</h1>
                 <div class="price-box">
-                    <div class="price-item"><span>1 - 99 pieces</span><span class="price-val">PKR 3,124</span></div>
-                    <div class="price-item"><span>>= 1,000 pieces</span><span class="price-val">PKR 2,265</span></div>
+                    <div class="price-item"><span>MOQ 20-50pcs</span><span class="price-val">PKR 3,124</span></div>
+                    <div class="price-item"><span>Bulk 1,000+</span><span class="price-val">PKR 2,265</span></div>
                 </div>
                 <div class="spec-grid">
                     <div class="spec-item"><span class="spec-label">Material:</span> 100% Cotton</div>
                     <div class="spec-item"><span class="spec-label">Weight:</span> 300 Grams</div>
-                    <div class="spec-item"><span class="spec-label">Feature:</span> Breathable</div>
                 </div>
             </div>
         </div>
@@ -181,19 +161,67 @@
 
     <div id="company-overview-page" class="container" style="display:none;">
         <h2>Company Overview</h2>
-        <p>TraditionX Industry is a professional manufacturer and exporter in Sialkot, Pakistan.</p>
+        <div class="overview-grid">
+            <div>
+                <p>TraditionX Industry is a leading garments manufacturer based in Sialkot, Pakistan. We specialize in high-quality sportswear and casual apparel with global exports.</p>
+                <img src="image1.jpeg" style="width:100%; border-radius:8px; margin-top:15px;">
+            </div>
+            <div style="background:#fafafa; padding:20px;">
+                <h3>Factory Metrics</h3>
+                <table class="metrics-table">
+                    <tr><td>Production Capacity</td><td>50,000 pcs/month</td></tr>
+                    <tr><td>Lead Time</td><td>12-15 Days</td></tr>
+                    <tr><td>Location</td><td>Sialkot, Pakistan</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact-page" class="container" style="display:none;">
+        <h2>Contact Information</h2>
+        <div class="contact-grid">
+            <div>
+                <div class="contact-card">
+                    <h3>CEO: Muhammad Huzaifa</h3>
+                    <p>Email: muhammadhuzaifa4248@gmail.com</p>
+                </div>
+                <div class="contact-card">
+                    <h3>General: Hammad Mustafa</h3>
+                    <p>Email: hammad501@outlook.com</p>
+                    <p>Phone: 03395858466</p>
+                </div>
+                <div class="contact-card">
+                    <h3>Head Office</h3>
+                    <p>Opposite NBP Best Pharmacy, First Floor, Sialkot.</p>
+                </div>
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/share/1DfQrrertE/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="FB"></a>
+                    <a href="https://www.instagram.com/traditionxindustry?igsh=M2VmcG90eGFiYndw" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="IG"></a>
+                </div>
+            </div>
+            <div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3372.4868202573216!2d74.55139507565345!3d32.54084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzLCszInMjcuMCJOIDc0wrAzMycxNS4wIkU!5e0!3m2!1sen!2s!4v1715800000000" width="100%" height="400" style="border:0; border-radius:8px;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
     </div>
 
     <footer>
         <div class="footer-grid">
+            <div class="footer-nav">
+                <h4>Navigation</h4>
+                <ul>
+                    <li onclick="showPage('home')">Home</li>
+                    <li onclick="showPage('gymshorts')">Products</li>
+                    <li onclick="showPage('overview')">Company Overview</li>
+                    <li onclick="showPage('contact')">Contact Us</li>
+                </ul>
+            </div>
             <div>
                 <h4>TraditionX Industry</h4>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/share/1DfQrrertE/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" width="30" alt="FB"></a>
+                    <a href="https://www.facebook.com/share/1DfQrrertE/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="FB"></a>
                 </div>
-            </div>
-            <div>
-                <h4>Secure Payments</h4>
                 <div class="pay-logos">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Payoneer_logo.svg" alt="Payoneer">
@@ -206,9 +234,9 @@
     <script>
         function toggleMobileMenu() { document.getElementById('navLinks').classList.toggle('active'); }
         function showPage(p) {
-            document.getElementById('home-page').style.display = (p === 'home') ? 'block' : 'none';
-            document.getElementById('product-detail-page').style.display = (p === 'gymshorts') ? 'block' : 'none';
-            document.getElementById('company-overview-page').style.display = (p === 'overview') ? 'block' : 'none';
+            const pages = ['home-page', 'product-detail-page', 'company-overview-page', 'contact-page'];
+            const target = (p === 'home') ? 'home-page' : (p === 'gymshorts') ? 'product-detail-page' : (p === 'overview') ? 'company-overview-page' : 'contact-page';
+            pages.forEach(pg => document.getElementById(pg).style.display = (pg === target) ? 'block' : 'none');
             if(window.innerWidth <= 768) document.getElementById('navLinks').classList.remove('active');
             window.scrollTo(0,0);
         }
@@ -231,12 +259,12 @@
         }
         function resetZoom() { document.getElementById('zoom-res').style.display = 'none'; }
 
-        let idx = 0;
+        let sIdx = 0;
         const mainSlides = [document.getElementById('s1'), document.getElementById('s2'), document.getElementById('s3')];
         setInterval(() => { 
-            mainSlides[idx].classList.remove('active'); 
-            idx = (idx + 1) % mainSlides.length; 
-            mainSlides[idx].classList.add('active'); 
+            mainSlides[sIdx].classList.remove('active'); 
+            sIdx = (sIdx + 1) % mainSlides.length; 
+            mainSlides[sIdx].classList.add('active'); 
         }, 3000);
     </script>
 </body>
