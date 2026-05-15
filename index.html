@@ -84,18 +84,26 @@
         .footer-links a { color: #aaa; text-decoration: none; display: block; padding: 5px 0; font-size: 14px; cursor: pointer; }
         .footer-links a:hover { color: white; }
         .social-row { display: flex; gap: 15px; margin-top: 15px; }
-
+        .social-row img { width: 30px; height: 30px; filter: none; }
+        
         .pay-logos {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             gap: 15px;
         }
+
         .pay-logos svg,
         .pay-logos img {
             height: 35px;
             width: auto;
             display: block;
+        }
+
+        /* PDF Embeds */
+        .pdf-embed { width: 100%; height: 600px; border: 1px solid #ccc; margin: 20px 0; }
+        @media (max-width: 768px) {
+            .pdf-embed { height: 400px; }
         }
 
         /* Mobile Responsive */
@@ -136,17 +144,18 @@
     <div class="header-banner"><img src="banner11.jpg" alt="TraditionX"></div>
 
     <nav>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">&#9776;</button>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
         <div class="nav-links" id="navLinks">
             <div class="nav-item"><a onclick="showPage('home')">Home</a></div>
-            <div class="nav-item"><a onclick="showPage('products')">Products</a></div>
+            <div class="nav-item"><a onclick="showPage('catalog')">Products</a></div>
             <div class="nav-item"><a onclick="showPage('overview')">Company Overview</a></div>
+            <div class="nav-item"><a onclick="showPage('fabric')">Fabric & Color Options</a></div>
             <div class="nav-item"><a onclick="showPage('contact')">Contacts</a></div>
         </div>
     </nav>
 
     <div id="home" class="page-section active">
-        <div class="slider-container" onclick="showPage('products')">
+        <div class="slider-container" onclick="showPage('gymshorts')">
             <img src="banner1.avif" class="slide active" alt="B1">
             <img src="banner2.avif" class="slide" alt="B2">
             <img src="banner3.avif" class="slide" alt="B3">
@@ -172,207 +181,3 @@
             </div>
         </div>
     </div>
-
-    <div id="products" class="page-section container">
-        <h2>Product Catalog</h2>
-        <object data="catalog.pdf" type="application/pdf" width="100%" height="600px">
-            <p>Your browser does not support PDFs. <a href="catalog.pdf">Download the catalog.</a></p>
-        </object>
-    </div>
-
-    <div id="gymshorts" class="page-section container">
-        <div class="product-grid">
-            <div class="image-viewer" id="viewer" onmousemove="zoom(event)" onmouseleave="resetZoom()">
-                <div class="zoom-lens" id="lens"></div>
-                <button class="nav-arrow" onclick="prodMove(-1)">&#10094;</button>
-                <img src="main-image-1.jpeg" class="prod-slide active" alt="P1">
-                <img src="main-image-2.jpeg" class="prod-slide" alt="P2">
-                <img src="main-image-3.jpeg" class="prod-slide" alt="P3">
-                <img src="main-image-4.jpeg" class="prod-slide" alt="P4">
-                <img src="main-image-5.jpeg" class="prod-slide" alt="P5">
-                <button class="nav-arrow next-arrow" onclick="prodMove(1)">&#10095;</button>
-            </div>
-            <div class="details">
-                <h1 style="font-size:24px;">Gym Casual Shorts - Wholesale Customized Style</h1>
-                <div style="background:#dadde2; padding:20px; border-radius:5px; margin:20px 0;">
-                    <div style="display:flex; justify-content:space-between; border-bottom:1px solid #ccc; padding:10px 0;">
-                        <span>1 - 99 pieces</span><strong style="color:var(--primary-red)">PKR 3,124</strong>
-                    </div>
-                    <div style="display:flex; justify-content:space-between; padding:10px 0;">
-                        <span>&ge; 1,000 pieces</span><strong style="color:var(--primary-red)">PKR 2,265</strong>
-                    </div>
-                </div>
-                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; font-size:14px;">
-                    <div><strong>Material:</strong> 100% Cotton</div>
-                    <div><strong>Weight:</strong> 300 Grams</div>
-                    <div><strong>Feature:</strong> Breathable, Quick Dry</div>
-                    <div><strong>Style:</strong> Casual / Gym Wear</div>
-                </div>
-                <button onclick="window.open('https://wa.me/923110796664')" style="background:var(--primary-red); color:white; border:none; width:100%; padding:15px; margin-top:20px; font-weight:bold; cursor:pointer; border-radius:5px;">REQUEST CUSTOM LOGO</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="overview" class="page-section container">
-        <h2 style="border-bottom:2px solid var(--primary-red); padding-bottom:10px;">Company Overview</h2>
-        <div class="overview-grid">
-            <img src="image1.jpeg" class="overview-img" alt="Production">
-            <img src="image2.jpg" class="overview-img" alt="Facility">
-        </div>
-        <div style="margin-top:30px; line-height:1.8;">
-            <h3>TraditionX Industry - Sialkot, Pakistan</h3>
-            <p>We are a leading professional manufacturer specializing in premium sportswear and casual apparel. Our facility covers 30,000 sqm with a dedicated workforce of 101–200 professionals. We pride ourselves on a 100% response rate and high-quality production standards including digital printing and plain dyeing technics.</p>
-            <blockquote style="background:#dadde2; padding:20px; border-left:5px solid var(--primary-red); font-weight:bold;">
-                CEO Muhammad Huzaifa: "Quality is our tradition. We bring years of industry expertise to every stitch."
-            </blockquote>
-        </div>
-    </div>
-
-    <div id="contact" class="page-section container">
-        <h2 style="border-bottom:2px solid var(--primary-red); padding-bottom:10px;">Contact Information</h2>
-        <div class="contact-grid">
-            <div>
-                <div class="contact-card">
-                    <h4>TraditionX Company</h4>
-                    <p>Email: traditionxindustry@gmail.com<br>Phone: 03110796664</p>
-                </div>
-                <div class="contact-card">
-                    <h4>Muhammad Huzaifa (CEO)</h4>
-                    <p>Email: muhammadhuzaifa4248@gmail.com<br>Phone: 03270574248</p>
-                </div>
-                <div class="contact-card">
-                    <h4>Hammad Mustafa (General Manager)</h4>
-                    <p>Email: hammad501@outlook.com<br>Phone: 03395858466</p>
-                </div>
-                <p><strong>Address:</strong> Opposite NBP best pharmacy, first floor, Sialkot.</p>
-                <div class="social-row">
-                    <a href="https://www.facebook.com/share/1DfQrrertE/" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#fff" width="30" height="30"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></svg>
-                    </a>
-                    <a href="https://www.instagram.com/traditionxindustry" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#fff" width="30" height="30"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417 3.9 3.9 0 0 0-1.417-.923C10.443.01 10.172 0 7.998 0zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zM8 4.709a3.291 3.291 0 1 0 0 6.582 3.291 3.291 0 0 0 0-6.582zm0 5.414a2.123 2.123 0 1 1 0-4.246 2.123 2.123 0 0 1 0 4.246z"/></svg>
-                    </a>
-                    <a href="https://www.linkedin.com/company/traditionx-industry/" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#fff" width="30" height="30"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865H15.3V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016V6.169h-2.4V16z"/></svg>
-                    </a>
-                </div>
-            </div>
-            <div class="map-container">
-                <iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=74.550,32.538,74.558,32.544&layer=mapnik&marker=32.54084,74.55397" style="border: 1px solid black"></iframe>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-links">
-                <h4>Navigation</h4>
-                <a onclick="showPage('home')">Home</a>
-                <a onclick="showPage('products')">Products</a>
-                <a onclick="showPage('overview')">Company Overview</a>
-                <a onclick="showPage('contact')">Contacts</a>
-                <a href="catalog.pdf" download style="display: block; margin-top: 5px;">Product Catalog</a>
-                <a href="options.pdf" download style="display: block; margin-top: 5px;">Fabric Blend Options</a>
-            </div>
-            <div>
-                <h4>Social Media</h4>
-                <div class="social-row">
-                    <a href="https://www.facebook.com/share/1DfQrrertE/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#fff" width="30" height="30"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></svg></a>
-                    <a href="https://www.instagram.com/traditionxindustry" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#fff" width="30" height="30"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417 3.9 3.9 0 0 0-1.417-.923C10.443.01 10.172 0 7.998 0zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zM8 4.709a3.291 3.291 0 1 0 0 6.582 3.291 3.291 0 0 0 0-6.582zm0 5.414a2.123 2.123 0 1 1 0-4.246 2.123 2.123 0 0 1 0 4.246z"/></svg></a>
-                    <a href="https://www.linkedin.com/company/traditionx-industry/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#fff" width="30" height="30"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865H15.3V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016V6.169h-2.4V16z"/></svg></a>
-                </div>
-            </div>
-            <div>
-                <h4>Payments</h4>
-                <div class="pay-logos">
-                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-label="Visa">
-                        <rect width="120" height="40" rx="6" fill="white"/>
-                        <text x="14" y="27" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" font-style="italic" fill="#1434CB">VISA</text>
-                    </svg>
-                    <svg viewBox="0 0 170 40" xmlns="http://www.w3.org/2000/svg" aria-label="Payoneer">
-                        <rect width="170" height="40" rx="6" fill="white"/>
-                        <circle cx="20" cy="20" r="10" fill="#F28C28"/>
-                        <path d="M15 20 L19 24 L27 15" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                        <text x="40" y="27" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#111">Payoneer</text>
-                    </svg>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
-                </div>
-            </div>
-        </div>
-        <p style="text-align:center; margin-top:40px; color:#666; font-size:12px;">© 2026 TraditionX Industry. All rights reserved.</p>
-    </footer>
-
-    <script>
-        // Navigation Logic
-        function toggleMobileMenu() { document.getElementById('navLinks').classList.toggle('active'); }
-        function showPage(pId) {
-            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
-            document.getElementById(pId).classList.add('active');
-            document.getElementById('navLinks').classList.remove('active');
-            window.scrollTo(0,0);
-        }
-
-        // Main Slider
-        let sIdx = 0;
-        const slides = document.querySelectorAll('.slider-container .slide');
-        setInterval(() => {
-            slides[sIdx].classList.remove('active');
-            sIdx = (sIdx + 1) % slides.length;
-            slides[sIdx].classList.add('active');
-        }, 3000);
-
-        // Product Viewer Logic
-        let pIdx = 0;
-        const pSlides = document.querySelectorAll('.prod-slide');
-        function prodMove(dir) {
-            pSlides[pIdx].classList.remove('active');
-            pIdx = (pIdx + dir + pSlides.length) % pSlides.length;
-            pSlides[pIdx].classList.add('active');
-            resetZoom();
-        }
-        setInterval(() => prodMove(1), 3000);
-
-        function zoom(e) {
-            const v = document.getElementById('viewer');
-            const l = document.getElementById('lens');
-            l.style.backgroundImage = `url('${pSlides[pIdx].src}')`;
-            l.style.backgroundSize = `${v.offsetWidth * 2.5}px ${v.offsetHeight * 2.5}px`;
-            l.style.backgroundPosition = `-${e.offsetX * 1.5}px -${e.offsetY * 1.5}px`;
-        }
-        function resetZoom() { document.getElementById('lens').style.display = 'none'; }
-
-        // Chatbot Logic
-        function toggleChat() { 
-            const c = document.getElementById('chatbot');
-            c.style.display = (c.style.display === 'flex') ? 'none' : 'flex';
-        }
-
-        function sendChat() {
-            const input = document.getElementById('chat-in');
-            const logs = document.getElementById('chat-logs');
-            if(!input.value) return;
-            
-            const userDiv = document.createElement('div');
-            userDiv.style = "background:var(--primary-red); color:white; padding:8px; border-radius:10px; margin-bottom:10px; align-self:flex-end; font-size:13px; margin-left:20px;";
-            userDiv.innerText = input.value;
-            logs.appendChild(userDiv);
-            
-            const txt = input.value.toLowerCase();
-            input.value = '';
-            
-            let reply = "I'm checking our manufacturing queue... For urgent pricing, please WhatsApp Muhammad Huzaifa at 03270574248.";
-            if(txt.includes("price") || txt.includes("cost")) reply = "Our Gym Shorts start at PKR 3,124 for samples. Bulk orders over 1000 pcs drop to PKR 2,265. Custom logos add a small fee.";
-            if(txt.includes("fabric") || txt.includes("material")) reply = "We use premium 100% Cotton (300 GSM) for our standard gym shorts, but we can offer Pima cotton or poly-blends upon request.";
-            if(txt.includes("hammad") || txt.includes("gm")) reply = "Hammad Mustafa is our General Manager. You can reach him at hammad501@outlook.com for operational queries.";
-
-            setTimeout(() => {
-                const botDiv = document.createElement('div');
-                botDiv.style = "background:#dadde2; padding:8px; border-radius:10px; margin-bottom:10px; font-size:13px; margin-right:20px;";
-                botDiv.innerText = reply;
-                logs.appendChild(botDiv);
-                logs.scrollTop = logs.scrollHeight;
-            }, 600);
-        }
-    </script>
-</body>
-</html>
