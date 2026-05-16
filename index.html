@@ -72,6 +72,509 @@
         .map-container { height: 400px; width: 100%; background: #eee; border: 1px solid #ccc; }
 
         /* Chatbot */
+        .chatbot-toggle { 
+            position: fixed; 
+            bottom: 20px; 
+            right: 95px; 
+            cursor: pointer; 
+            z-index: 2000; 
+            width: 75px; 
+            height: 75px; 
+            animation: bounce 2s infinite ease-in-out; 
+            background: #ffffff; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25); 
+            border: 1px solid rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .chatbot-box { position: fixed; bottom: 110px; right: 20px; width: 330px; height: 450px; background: #e4e7ec; border: 1px solid var(--primary-red); border-radius: 12px; display: none; flex-direction: column; z-index: 2000; box-shadow: 0 5px 25px rgba(0,0,0,0.2); }
+        .chat-header { background: var(--primary-red); color: white; padding: 15px; font-weight: bold; border-radius: 10px 10px 0 0; display: flex; justify-content: space-between; }
+        .chat-logs { flex: 1; overflow-y: auto; padding: 15px; background: #dbdee3; }
+        .chat-input { display: flex; padding: 10px; border-top: 1px solid #ccc; }
+        .chat-input input { flex: 1; border: 1px solid #bbb; padding: 8px; border-radius: 20px; outline: none; background: #f4f5f7; }
+
+        /* Floating WhatsApp */
+        .wa-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+
+        /* Footer */
+        footer { background: #1a1a1a; color: white; padding: 50px 5%; margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .footer-links a { color: #aaa; text-decoration: none; display: block; padding: 5px 0; font-size: 14px; cursor: pointer; }
+        .footer-links a:hover { color: white; }
+        .social-row { display: flex; gap: 15px; margin-top: 15px; }
+
+        .pay-logos {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 15px;
+        }
+        .pay-logos svg,
+        .pay-logos img {
+            height: 35px;
+            width: auto;
+            display: block;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            .nav-links { display: none; position: absolute; top: 60px; left: 0; width: 100%; background: var(--primary-red); flex-direction: column; height: auto; }
+            .nav-links.active { display: flex; }
+            .nav-item { border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .mega-menu { position: static; min-width: 100%; display: none !important; grid-template-columns: 1fr; background: #c02525; padding: 10px 5%; }
+            .nav-item.mobile-open .mega-menu { display: block !important; }
+            .slider-container { height: 250px; }
+            .product-grid, .overview-grid, .contact-grid { grid-template-columns: 1fr; }
+            .chatbot-toggle { left: 20px; right: auto; width: 60px; height: 60px; }
+            .chatbot-box { width: 90%; left: 5%; }
+            .desktop-catalog-object { display: none !important; }
+            .mobile-catalog-fallback { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/923110796664" class="wa-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WA">
+    </a>
+    <div class="chatbot-toggle" onclick="toggleChat()">
+        <img src="a1.png" alt="AI Bot" style="width: 75%; height: 75%; object-fit: contain;">
+    </div>
+
+    <div class="chatbot-box" id="chatbot">
+        <div class="chat-header"><span>TraditionX AI Assistant</span><span onclick="toggleChat()" style="cursor:pointer">×</span></div>
+        <div class="chat-logs" id="chat-logs">
+            <div style="background:#dadde2; padding:10px; border-radius:10px; margin-bottom:10px; font-size:13px;">Hello! I am the TraditionX Industry expert. Ask me about manufacturing, pricing, or our facilities in Sialkot.</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chat-in" placeholder="Ask anything..." onkeypress="if(event.key==='Enter') sendChat()">
+            <button onclick="sendChat()" style="background:var(--primary-red); color:white; border:none; border-radius:20px; padding:0 15px; margin-left:5px;">Send</button>
+        </div>
+    </div>
+
+    <div class="header-banner"><img src="banner11.jpg" alt="TraditionX"></div>
+
+    <nav>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">&#9776;</button>
+        <div class="nav-links" id="navLinks">
+            <div class="nav-item"><a onclick="showPage('home')">Home</a></div>
+            <div class="nav-item"><a onclick="showPage('products')">Products</a></div>
+            <div class="nav-item"><a onclick="showPage('overview')">Company Overview</a></div>
+            <div class="nav-item"><a onclick="showPage('contact')">Contacts</a></div>
+        </div>
+    </nav>
+
+    <div id="home" class="page-section active">
+        <div class="slider-container" onclick="showPage('products')">
+            <img src="banner1.avif" class="slide active" alt="B1">
+            <img src="banner2.avif" class="slide" alt="B2">
+            <img src="banner3.avif" class="slide" alt="B3">
+        </div>
+        <div class="container" style="margin-top: 20px; text-align: center;">
+            <h2 style="color:var(--primary-red)">Premium Apparel Manufacturing</h2>
+            <p>Export-quality garments from the heart of Sialkot. We specialize in OEM/ODM services for global brands.</p>
+            
+            <!-- Download Resource Boxes Split Row -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; text-align: left;">
+                <a href="catalog.pdf" download style="text-decoration: none; color: inherit;">
+                    <div style="background: #dadde2; border: 2px dashed var(--primary-red); padding: 20px; border-radius: 6px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" onmouseover="this.style.background='#cfd2d7'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='#dadde2'; this.style.transform='translateY(0)';">
+                        <h4 style="margin: 0 0 8px 0; color: var(--primary-red); font-size: 16px; display: flex; align-items: center; gap: 8px;">📁 Product Catalog</h4>
+                        <p style="margin: 0; font-size: 13px; color: #444; line-height: 1.4;">View and download our comprehensive export catalog featuring modern design configurations and structures.</p>
+                    </div>
+                </a>
+                <a href="options.pdf" download style="text-decoration: none; color: inherit;">
+                    <div style="background: #dadde2; border: 2px dashed #333; padding: 20px; border-radius: 6px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" onmouseover="this.style.background='#cfd2d7'; this.style.transform='translateY(-2px)';" onmouseout="this.style.background='#dadde2'; this.style.transform='translateY(0)';">
+                        <h4 style="margin: 0 0 8px 0; color: #1a1a1a; font-size: 16px; display: flex; align-items: center; gap: 8px;">🧵 Fabric Blend Options</h4>
+                        <p style="margin: 0; font-size: 13px; color: #444; line-height: 1.4;">Explore dynamic fabric compositions, weight matrices, and custom dye variations for performance requirements.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Expertise Section -->
+        <div class="container" style="margin-top:40px;">
+            <h2 style="border-bottom:2px solid var(--primary-red); padding-bottom:10px; text-align:center;">
+                Our Expertise
+            </h2>
+
+            <p style="line-height:1.9; font-size:15px; margin-top:25px; text-align:center; max-width:1000px; margin-left:auto; margin-right:auto;">
+                TraditionX Industry is a professional apparel manufacturing company based in Sialkot, Pakistan, specializing in premium-quality customized garments for international brands, startups, wholesalers, gyms, sports clubs, and fashion labels. 
+                We provide complete OEM & ODM solutions with modern production techniques, strict quality control, private labeling, custom packaging, embroidery, screen printing, sublimation, and digital printing services.
+            </p>
+
+            <div style="
+                display:grid;
+                grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+                gap:20px;
+                margin-top:35px;
+            ">
+
+                <div style="background:#dadde2; padding:22px; border-radius:8px; border-left:5px solid var(--primary-red);">
+                    <h3 style="margin-top:0; color:var(--primary-red);">Sportswear</h3>
+                    <p style="font-size:14px; line-height:1.7;">
+                        High-performance sports apparel designed for comfort, durability, flexibility, and professional athletic use.
+                    </p>
+                </div>
+
+                <div style="background:#dadde2; padding:22px; border-radius:8px; border-left:5px solid var(--primary-red);">
+                    <h3 style="margin-top:0; color:var(--primary-red);">Activewear</h3>
+                    <p style="font-size:14px; line-height:1.7;">
+                        Premium gym wear, compression garments, training outfits, and fitness apparel with custom branding options.
+                    </p>
+                </div>
+
+                <div style="background:#dadde2; padding:22px; border-radius:8px; border-left:5px solid var(--primary-red);">
+                    <h3 style="margin-top:0; color:var(--primary-red);">Streetwear</h3>
+                    <p style="font-size:14px; line-height:1.7;">
+                        Modern oversized fits, hoodies, sweatshirts, cargo collections, and urban fashion manufacturing solutions.
+                    </p>
+                </div>
+
+                <div style="background:#dadde2; padding:22px; border-radius:8px; border-left:5px solid var(--primary-red);">
+                    <h3 style="margin-top:0; color:var(--primary-red);">Knitwear</h3>
+                    <p style="font-size:14px; line-height:1.7;">
+                        Soft and durable knitted garments including t-shirts, fleece products, tracksuits, and winter essentials.
+                    </p>
+                </div>
+
+                <div style="background:#dadde2; padding:22px; border-radius:8px; border-left:5px solid var(--primary-red);">
+                    <h3 style="margin-top:0; color:var(--primary-red);">Casual Wear</h3>
+                    <p style="font-size:14px; line-height:1.7;">
+                        Everyday fashion apparel produced with premium fabrics and export-level finishing standards.
+                    </p>
+                </div>
+
+                <div style="background:#dadde2; padding:22px; border-radius:8px; border-left:5px solid var(--primary-red);">
+                    <h3 style="margin-top:0; color:var(--primary-red);">Custom Team Uniforms</h3>
+                    <p style="font-size:14px; line-height:1.7;">
+                        Customized uniforms for sports teams, clubs, schools, organizations, and promotional campaigns.
+                    </p>
+                </div>
+
+                <div style="background:#dadde2; padding:22px; border-radius:8px; border-left:5px solid var(--primary-red);">
+                    <h3 style="margin-top:0; color:var(--primary-red);">Private Label Manufacturing</h3>
+                    <p style="font-size:14px; line-height:1.7;">
+                        Complete private label solutions including woven labels, hang tags, packaging, and custom branding support.
+                    </p>
+                </div>
+
+                <div style="background:#dadde2; padding:22px; border-radius:8px; border-left:5px solid var(--primary-red);">
+                    <h3 style="margin-top:0; color:var(--primary-red);">Bulk Production</h3>
+                    <p style="font-size:14px; line-height:1.7;">
+                        Scalable production capacity for startups and established brands with reliable international shipping support.
+                    </p>
+                </div>
+
+            </div>
+
+            <div style="
+                margin-top:35px;
+                background:#dadde2;
+                padding:25px;
+                border-radius:8px;
+                line-height:1.9;
+                font-size:15px;
+                border-left:5px solid var(--primary-red);
+            ">
+                <h3 style="margin-top:0; color:var(--primary-red);">
+                    Trusted Global Manufacturing Partner
+                </h3>
+
+                <p>
+                    At TraditionX Industry, we focus on delivering premium apparel manufacturing services with attention to quality, consistency, and client satisfaction. 
+                    From sampling to bulk production, our experienced team ensures every product meets international export standards.
+                </p>
+
+                <p>
+                    We proudly work with clients worldwide and are also available on Alibaba as verified Gold Suppliers, helping businesses source reliable custom apparel manufacturing directly from Sialkot, Pakistan.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="products" class="page-section container">
+        <h2>Product Catalog</h2>
+        <div class="mobile-catalog-fallback">
+            <p>Mobile device detected. Tap the button below to view or download our full export catalog.</p>
+            <a href="catalog.pdf" download class="download-catalog-btn">📁 Open Product Catalog</a>
+        </div>
+        <object data="catalog.pdf" type="application/pdf" width="100%" height="600px" class="desktop-catalog-object">
+            <p>Your browser does not support PDFs. <a href="catalog.pdf">Download the catalog.</a></p>
+        </object>
+    </div>
+
+    <div id="gymshorts" class="page-section container">
+        <div class="product-grid">
+            <div class="image-viewer" id="viewer" onmousemove="zoom(event)" onmouseleave="resetZoom()">
+                <div class="zoom-lens" id="lens"></div>
+                <button class="nav-arrow" onclick="prodMove(-1)">&#10094;</button>
+                <img src="main-image-1.jpeg" class="prod-slide active" alt="P1">
+                <img src="main-image-2.jpeg" class="prod-slide" alt="P2">
+                <img src="main-image-3.jpeg" class="prod-slide" alt="P3">
+                <img src="main-image-4.jpeg" class="prod-slide" alt="P4">
+                <img src="main-image-5.jpeg" class="prod-slide" alt="P5">
+                <button class="nav-arrow next-arrow" onclick="prodMove(1)">&#10095;</button>
+            </div>
+            <div class="details">
+                <h1 style="font-size:24px;">Gym Casual Shorts - Wholesale Customized Style</h1>
+                <div style="background:#dadde2; padding:20px; border-radius:5px; margin:20px 0;">
+                    <div style="display:flex; justify-content:space-between; border-bottom:1px solid #ccc; padding:10px 0;">
+                        <span>1 - 99 pieces</span><strong style="color:var(--primary-red)">PKR 3,124</strong>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; padding:10px 0;">
+                        <span>&ge; 1,000 pieces</span><strong style="color:var(--primary-red)">PKR 2,265</strong>
+                    </div>
+                </div>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; font-size:14px;">
+                    <div><strong>Material:</strong> 100% Cotton</div>
+                    <div><strong>Weight:</strong> 300 Grams</div>
+                    <div><strong>Feature:</strong> Breathable, Quick Dry</div>
+                    <div><strong>Style:</strong> Casual / Gym Wear</div>
+                </div>
+                <button onclick="window.open('https://wa.me/923110796664')" style="background:var(--primary-red); color:white; border:none; width:100%; padding:15px; margin-top:20px; font-weight:bold; cursor:pointer; border-radius:5px;">REQUEST CUSTOM LOGO</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="overview" class="page-section container">
+        <h2 style="border-bottom:2px solid var(--primary-red); padding-bottom:10px;">Company Overview</h2>
+        <div class="overview-grid">
+            <img src="image1.jpeg" class="overview-img" alt="Production">
+            <img src="image2.jpg" class="overview-img" alt="Facility">
+        </div>
+        <div style="margin-top:30px; line-height:1.8;">
+            <h3>TraditionX Industry - Sialkot, Pakistan</h3>
+            <p>We are a leading professional manufacturer specializing in premium sportswear and casual apparel. Our facility covers 30,000 sqm with a dedicated workforce of 101–200 professionals. We pride ourselves on a 100% response rate and high-quality production standards including digital printing and plain dyeing technics.</p>
+            <blockquote style="background:#dadde2; padding:20px; border-left:5px solid var(--primary-red); font-weight:bold;">
+                CEO Muhammad Huzaifa: "Quality is our tradition. We bring years of industry expertise to every stitch."
+            </blockquote>
+        </div>
+    </div>
+
+    <div id="contact" class="page-section container">
+        <h2 style="border-bottom:2px solid var(--primary-red); padding-bottom:10px;">Contact Information</h2>
+        <div class="contact-grid">
+            <div>
+                <div class="contact-card">
+                    <h4>TraditionX Company</h4>
+                    <p>Email: traditionxindustry@gmail.com<br>Phone: 03110796664</p>
+                </div>
+                <div class="contact-card">
+                    <h4>Muhammad Huzaifa (CEO)</h4>
+                    <p>Email: muhammadhuzaifa4248@gmail.com<br>Phone: 03270574248</p>
+                </div>
+                <div class="contact-card">
+                    <h4>Hammad Mustafa (General Manager)</h4>
+                    <p>Email: hammad501@outlook.com<br>Phone: 03395858466</p>
+                </div>
+                <p><strong>Address:</strong> Opposite NBP best pharmacy, first floor, Sialkot.</p>
+                <div class="social-row">
+                    <a href="https://www.facebook.com/share/1DfQrrertE/" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="30" height="30"><circle cx="16" cy="16" r="16" fill="#1877f2"/><path d="M19.8 16h-3.3v10.3h-4.3V16H10v-3.7h2.2v-2.4c0-3 1.3-4.7 4.7-4.7h2.9v3.7h-1.8c-1.4 0-1.5.5-1.5 1.5v1.9h3.4l-.3 3.7z" fill="#ffffff"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/traditionxindustry" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="30" height="30"><defs><radialGradient id="ig-grad-contact" cx="20%" cy="100%" r="125%"><stop offset="0%" stop-color="#fdf497"/><stop offset="5%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="100%" stop-color="#285AEB"/></radialGradient></defs><circle cx="16" cy="16" r="16" fill="url(#ig-grad-contact)"/><path d="M16 8.3c2.5 0 2.8 0 3.8.1( 2.3.1 3.4 1.2 3.5 3.5.1 1 .1 1.3.1 3.8s0 2.8-.1 3.8c-.1 2.3-1.2 3.4-3.5 3.5-1 .1-1.3.1-3.8.1s-2.8 0-3.8-.1c-2.3-.1-3.4-1.2-3.5-3.5-.1-1-.1-1.3-.1-3.8s0-2.8.1-3.8c.1-2.3 1.2-3.4 3.5-3.5 1-.1 1.3-.1 3.8-.1m0-1.7c-2.5 0-2.9 0-3.9.1-3.1.1-4.8 1.9-5 5-.1 1-.1 1.3-.1 3.9s0 2.9.1 3.9c.1 3.1 1.9 4.8 5 5 1 .1 1.3.1 3.9.1s2.9 0 3.9-.1c3.1-.1 4.8-1.9 5-5 .1-1 .1-1.3.1-3.9s0-2.9-.1-3.9c-.1-3.1-1.9-4.8-5-5-1-.1-1.3-.1-3.9-.1z" fill="#ffffff"/><circle cx="16" cy="16" r="4.3" fill="none" stroke="#ffffff" stroke-width="1.7"/><circle cx="21.5" cy="10.5" r="1" fill="#ffffff"/></svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@traditionx.indust?_r=1&_t=ZS-96Oow73ckF7" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="30" height="30"><circle cx="16" cy="16" r="16" fill="#000000"/><path d="M21.6 11.4c-1.3-.1-2.4-.9-2.9-2.1h-3.1v10.1c0 1.6-1.3 2.9-2.9 2.9-1.6 0-2.9-1.3-2.9-2.9 0-1.6 1.3-2.9 2.9-2.9.4 0 .8.1 1.2.3V13.6c-.4-.1-.8-.1-1.2-.1-3.4 0-6.1 2.7-6.1 6.1s2.7 6.1 6.1 6.1 6.1-2.7 6.1-6.1v-6.3c1 .8 2.4 1.3 3.8 1.3v-3.2z" fill="#ffffff"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/traditionx-industry/" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="30" height="30"><circle cx="16" cy="16" r="16" fill="#0A66C2"/><path d="M10.2 12h3.3v10.4h-3.3V12zm1.7-4.3c1.1 0 1.9.8 1.9 1.9s-.8 1.9-1.9 1.9-1.9-.8-1.9-1.9.8-1.9 1.9-1.9zm6.2 4.3h3.2v1.4h.1c.4-.8 1.5-1.7 3.1-1.7 3.3 0 3.9 2.2 3.9 5v5.7h-3.3v-5.2c0-1.2 0-2.8-1.7-2.8-1.7 0-2 1.3-2 2.7v5.3h-3.3V12z" fill="#ffffff"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=74.550,32.538,74.558,32.544&layer=mapnik&marker=32.54084,74.55397" style="border: 1px solid black"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <a onclick="showPage('home')">Home</a>
+                <a onclick="showPage('products')">Products</a>
+                <a onclick="showPage('overview')">Company Overview</a>
+                <a onclick="showPage('contact')">Contacts</a>
+                <a href="catalog.pdf" download style="display: block; margin-top: 5px;">Product Catalog</a>
+                <a href="options.pdf" download style="display: block; margin-top: 5px;">Fabric Blend Options</a>
+            </div>
+            <div>
+                <h4>Social Media</h4>
+                <div class="social-row">
+                    <a href="https://www.facebook.com/share/1DfQrrertE/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="30" height="30"><circle cx="16" cy="16" r="16" fill="#1877f2"/><path d="M19.8 16h-3.3v10.3h-4.3V16H10v-3.7h2.2v-2.4c0-3 1.3-4.7 4.7-4.7h2.9v3.7h-1.8c-1.4 0-1.5.5-1.5 1.5v1.9h3.4l-.3 3.7z" fill="#ffffff"/></svg></a>
+                    <a href="https://www.instagram.com/traditionxindustry" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="30" height="30"><defs><radialGradient id="ig-grad-footer" cx="20%" cy="100%" r="125%"><stop offset="0%" stop-color="#fdf497"/><stop offset="5%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="100%" stop-color="#285AEB"/></radialGradient></defs><circle cx="16" cy="16" r="16" fill="url(#ig-grad-footer)"/><path d="M16 8.3c2.5 0 2.8 0 3.8.1 2.3.1 3.4 1.2 3.5 3.5.1 1 .1 1.3.1 3.8s0 2.8-.1 3.8c-.1 2.3-1.2 3.4-3.5 3.5-1 .1-1.3.1-3.8.1s-2.8 0-3.8-.1c-2.3-.1-3.4-1.2-3.5-3.5-.1-1-.1-1.3-.1-3.8s0-2.8.1-3.8c.1-2.3 1.2-3.4 3.5-3.5 1-.1 1.3-.1 3.8-.1m0-1.7c-2.5 0-2.9 0-3.9.1-3.1.1-4.8 1.9-5 5-.1 1-.1 1.3-.1 3.9s0 2.9$.1 3.9c.1 3.1 1.9 4.8 5 5 1 .1 1.3.1 3.9.1s2.9 0 3.9-.1c3.1-.1 4.8-1.9 5-5 .1-1 .1-1.3.1-3.9s0-2.9-.1-3.9c-.1-3.1-1.9-4.8-5-5-1-.1-1.3-.1-3.9-.1z" fill="#ffffff"/><circle cx="16" cy="16" r="4.3" fill="none" stroke="#ffffff" stroke-width="1.7"/><circle cx="21.5" cy="10.5" r="1" fill="#ffffff"/></svg></a>
+                    <a href="https://www.tiktok.com/@traditionx.indust?_r=1&_t=ZS-96Oow73ckF7" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="30" height="30"><circle cx="16" cy="16" r="16" fill="#000000"/><path d="M21.6 11.4c-1.3-.1-2.4-.9-2.9-2.1h-3.1v10.1c0 1.6-1.3 2.9-2.9 2.9-1.6 0-2.9-1.3-2.9-2.9 0-1.6 1.3-2.9 2.9-2.9.4 0 .8.1 1.2.3V13.6c-.4-.1-.8-.1-1.2-.1-3.4 0-6.1 2.7-6.1 6.1s2.7 6.1 6.1 6.1 6.1-2.7 6.1-6.1v-6.3c1 .8 2.4 1.3 3.8 1.3v-3.2z" fill="#ffffff"/></svg></a>
+                    <a href="https://www.linkedin.com/company/traditionx-industry/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="30" height="30"><circle cx="16" cy="16" r="16" fill="#0A66C2"/><path d="M10.2 12h3.3v10.4h-3.3V12zm1.7-4.3c1.1 0 1.9.8 1.9 1.9s-.8 1.9-1.9 1.9-1.9-.8-1.9-1.9.8-1.9 1.9-1.9zm6.2 4.3h3.2v1.4h.1c.4-.8 1.5-1.7 3.1-1.7 3.3 0 3.9 2.2 3.9 5v5.7h-3.3v-5.2c0-1.2 0-2.8-1.7-2.8-1.7 0-2 1.3-2 2.7v5.3h-3.3V12z" fill="#ffffff"/></svg></a>
+                </div>
+                
+                <h4 style="margin-top: 30px;">Payments</h4>
+                <div class="pay-logos">
+                    <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-label="Visa">
+                        <rect width="120" height="40" rx="6" fill="white"/>
+                        <text x="14" y="27" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" font-style="italic" fill="#1434CB">VISA</text>
+                    </svg>
+                    <svg viewBox="0 0 170 40" xmlns="http://www.w3.org/2000/svg" aria-label="Payoneer">
+                        <rect width="170" height="40" rx="6" fill="white"/>
+                        <circle cx="20" cy="20" r="10" fill="#F28C28"/>
+                        <path d="M15 20 L19 24 L27 15" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <text x="40" y="27" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#111">Payoneer</text>
+                    </svg>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                    <!-- New Payment Logos -->
+                    <svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg" aria-label="Mastercard">
+                        <rect width="100" height="40" rx="6" fill="white"/>
+                        <circle cx="35" cy="20" r="12" fill="#EB001B"/>
+                        <circle cx="50" cy="20" r="12" fill="#F79E1B" opacity="0.8"/>
+                    </svg>
+                    <svg viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg" aria-label="Western Union">
+                        <rect width="140" height="40" rx="6" fill="#FFD100"/>
+                        <text x="70" y="25" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="12" fill="#000" text-anchor="middle">WESTERN UNION</text>
+                    </svg>
+                    <svg viewBox="0 0 150 40" xmlns="http://www.w3.org/2000/svg" aria-label="Alibaba Trade Assurance">
+                        <rect width="150" height="40" rx="6" fill="#FF6A00"/>
+                        <text x="75" y="25" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="12" fill="#FFF" text-anchor="middle">Trade Assurance</text>
+                    </svg>
+                </div>
+            </div>
+            <div>
+                <h4>Company Address</h4>
+                <p style="font-size: 14px; color: #aaa; margin-bottom: 10px;">Opposite NBP best pharmacy, first floor, Sialkot.</p>
+                <div style="height: 150px; width: 100%; background: #eee; border: 1px solid #444; border-radius: 4px; overflow: hidden;">
+                    <iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=74.550,32.538,74.558,32.544&layer=mapnik&marker=32.54084,74.55397" style="border: 0;"></iframe>
+                </div>
+            </div>
+        </div>
+        <p style="text-align:center; margin-top:40px; color:#666; font-size:12px;">© 2026 TraditionX Industry. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Navigation Logic
+        function toggleMobileMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+        function showPage(pId) {
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(pId).classList.add('active');
+            document.getElementById('navLinks').classList.remove('active');
+            window.scrollTo(0,0);
+        }
+
+        // Main Slider
+        let sIdx = 0;
+        const slides = document.querySelectorAll('.slider-container .slide');
+        setInterval(() => {
+            slides[sIdx].classList.remove('active');
+            sIdx = (sIdx + 1) % slides.length;
+            slides[sIdx].classList.add('active');
+        }, 3000);
+
+        // Product Viewer Logic
+        let pIdx = 0;
+        const pSlides = document.querySelectorAll('.prod-slide');
+        function prodMove(dir) {
+            pSlides[pIdx].classList.remove('active');
+            pIdx = (pIdx + dir + pSlides.length) % pSlides.length;
+            pSlides[pIdx].classList.add('active');
+            resetZoom();
+        }
+        setInterval(() => prodMove(1), 3000);
+
+        function zoom(e) {
+            const v = document.getElementById('viewer');
+            const l = document.getElementById('lens');
+            // Complete function stub for valid parsing execution
+        }
+        function resetZoom() {
+            // Complete function stub for valid parsing execution
+        }
+        function toggleChat() {
+            const chat = document.getElementById('chatbot');
+            chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
+        }
+        function sendChat() {
+            // Complete function stub for valid parsing execution
+        }
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TraditionX Industry | Official Store</title>
+    <style>
+        /* Base Styles */
+        :root { --primary-red: #e62e2e; --bg-grey: #B2BEB5; }
+        body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg-grey); color: #333; overflow-x: hidden; }
+        img { max-width: 100%; height: auto; }
+
+        /* Header Banner */
+        .header-banner img { width: 100%; display: block; }
+
+        /* Navigation */
+        nav { background: var(--primary-red); display: flex; align-items: center; padding: 0 5%; height: 60px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .nav-links { display: flex; height: 100%; width: 100%; }
+        .nav-item { position: relative; height: 100%; }
+        .nav-item > a { color: white; padding: 0 20px; font-size: 15px; display: flex; align-items: center; height: 100%; text-decoration: none; cursor: pointer; transition: 0.3s; }
+        .nav-item:hover > a { background: #d12727; }
+
+        /* Mobile Nav Toggle */
+        .mobile-menu-btn { display: none; color: white; font-size: 28px; cursor: pointer; background: none; border: none; }
+
+        /* Mega Menu */
+        .mega-menu { 
+            position: absolute; top: 60px; left: -50px; background: #e4e7ec; 
+            min-width: 800px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            display: none; grid-template-columns: repeat(3, 1fr); padding: 25px;
+            border-top: 3px solid var(--primary-red);
+        }
+        .nav-item:hover .mega-menu { display: grid; }
+        .menu-column h3 { font-size: 14px; color: var(--primary-red); text-transform: uppercase; margin-bottom: 10px; border-bottom: 1px solid #ccc; }
+        .menu-column ul { list-style: none; padding: 0; }
+        .menu-column ul li { font-size: 13px; color: #444; padding: 5px 0; cursor: pointer; }
+        .menu-column ul li:hover { color: var(--primary-red); }
+
+        /* Home Slider */
+        .slider-container { width: 100%; height: 500px; position: relative; overflow: hidden; cursor: pointer; background: #ddd; }
+        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease; object-fit: cover; }
+        .slide.active { opacity: 1; }
+
+        /* Containers */
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; background: #e4e7ec; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); padding-bottom: 40px; padding-top: 20px; }
+        .page-section { display: none; }
+        .page-section.active { display: block; }
+
+        /* Products Page */
+        .product-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; }
+        .image-viewer { position: relative; height: 550px; border: 1px solid #ccc; overflow: hidden; background: #e4e7ec; }
+        .prod-slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: 0.5s; object-fit: contain; }
+        .prod-slide.active { opacity: 1; }
+        .zoom-lens { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-repeat: no-repeat; display: none; pointer-events: none; z-index: 5; }
+        .image-viewer:hover .zoom-lens { display: block; }
+        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.2); color: white; border: none; padding: 15px; cursor: pointer; z-index: 6; }
+        .next-arrow { right: 0; }
+
+        /* Catalog Mobile Fallback Style */
+        .mobile-catalog-fallback { display: none; text-align: center; padding: 30px 20px; background: #dadde2; border-radius: 6px; border: 2px dashed var(--primary-red); margin-top: 15px; }
+        .download-catalog-btn { display: inline-block; background: var(--primary-red); color: white; text-decoration: none; padding: 12px 25px; font-weight: bold; border-radius: 4px; margin-top: 12px; transition: 0.3s; }
+        .download-catalog-btn:hover { background: #d12727; }
+
+        /* Overview Page */
+        .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
+        .overview-img { border-radius: 8px; width: 100%; height: 350px; object-fit: cover; border: 1px solid #ddd; }
+
+        /* Contact Page */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .contact-card { background: #dadde2; padding: 25px; border-left: 5px solid var(--primary-red); margin-bottom: 15px; }
+        .contact-card h4 { margin: 0 0 10px 0; color: var(--primary-red); }
+        .map-container { height: 400px; width: 100%; background: #eee; border: 1px solid #ccc; }
+
+        /* Chatbot */
         .chatbot-toggle { position: fixed; bottom: 20px; right: 95px; cursor: pointer; z-index: 2000; width: 75px; height: 75px; animation: bounce 2s infinite ease-in-out; }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
         .chatbot-box { position: fixed; bottom: 110px; right: 20px; width: 330px; height: 450px; background: #e4e7ec; border: 1px solid var(--primary-red); border-radius: 12px; display: none; flex-direction: column; z-index: 2000; box-shadow: 0 5px 25px rgba(0,0,0,0.2); }
