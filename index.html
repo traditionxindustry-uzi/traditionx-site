@@ -155,6 +155,7 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             padding-bottom: 40px;
             padding-top: 20px;
+            box-sizing: border-box;
         }
         .page-section {
             display: none;
@@ -432,6 +433,11 @@
             grid-template-columns: 1.15fr 1fr;
             gap: 40px;
         }
+        /* Prevent thumbnail overflow from breaking the page width */
+        .sportswear-gallery-col {
+            overflow: hidden;
+            min-width: 0;
+        }
         .sportswear-main {
             position: relative;
             height: 560px;
@@ -462,6 +468,7 @@
             padding-bottom: 10px;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
+            max-width: 100%;
         }
         .sportswear-thumbs::-webkit-scrollbar {
             height: 6px;
@@ -771,7 +778,7 @@
     <div id="sportswear" class="page-section container">
         <h2 style="border-bottom:2px solid var(--primary-red); padding-bottom:10px;">SPORTSWEAR</h2>
         <div class="sportswear-layout">
-            <div>
+            <div class="sportswear-gallery-col">
                 <div class="sportswear-main" id="sportswearViewer">
                     <button class="nav-arrow" onclick="sportswearMove(-1)" title="Previous Image">&#10094;</button>
                     <button class="nav-arrow next-arrow" onclick="sportswearMove(1)" title="Next Image">&#10095;</button>
@@ -1064,192 +1071,383 @@
                         <rect width="120" height="40" rx="6" fill="white"/>
                         <text x="14" y="27" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" font-style="italic" fill="#1434CB">VISA</text>
                     </svg>
-                    <svg viewBox="0 0 170 40" xmlns="http://www.w3.org/2000/svg" aria-label="Payoneer">
-                        <rect width="170" height="40" rx="6" fill="white"/>
-                        <circle cx="20" cy="20" r="10" fill="#F28C28"/>
-                        <path d="M15 20 L19 24 L27 15" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                        <text x="40" y="27" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#111">Payoneer</text>
+                    <svg viewBox="0 0 170 40" xmlns="http://www.w3.org/20040" xmlns="http://www.w3.org/2000/svg" aria-label0/svg" aria-label="Pay="Payoneer">
+                       oneer <rect">
+                        <rect width=" width="170"170" height=" height="40"40" rx=" rx="6"6" fill=" fill="whitewhite"/>
+                       "/>
+                        <circle cx <circle cx="20="20" cy" cy="20="20" r" r="10="10" fill="#F28C" fill="#F28C2828"/>
+                       "/>
+                        <path d <path d="M="M15 15 20 L20 L19 19 24 L24 L27 27 15"15" fill=" fill="none"none" stroke=" stroke="white"white" stroke-width="3 stroke-width="3" stroke" stroke-linecap-linecap="round" stroke="round" stroke-linejoin-linejoin="round="round"/>
+                       "/>
+                        <text <text x=" x="40" y="40" y="27"27" font-family font-family="A="Arial,rial, Helvetica Helvetica, sans, sans-serif"-serif" font-size font-size="18="18" font" font-weight="-weight="700"700" fill="# fill="#111">111">PayonePayoneer</text>
+                    </er</text>
+                    </svgsvg>
+                   >
+                    <img src <img src="https://upload="https://upload.wik.wikimedia.orgimedia.org/wikipedia/wikipedia/commons/commons/b/b/b/b5/P5/PayPalayPal.svg".svg" alt=" alt="PayPalPayPal">
+                   ">
+                    <svg viewBox <svg viewBox="0="0 0 0 100 100 40 40" xmlns" xmlns="http="http://www://www.w3.w3.org/.org/20002000/svg/svg" aria" aria-label="-label="Mastercard">
+                       Mastercard">
+                        <rect <rect width=" width="100"100" height=" height="40"40" rx=" rx="6"6" fill=" fill="whitewhite"/>
+                       "/>
+                        < <circle cx="circle cx="35" cy="20" r="12" fill="#EB001B"/>
+                        <circle cx="50" cy35" cy="20" r="12" fill="#EB001B"/>
+                        <="20" r="12" fill="#F79E1circle cx="50" cy="20" r="12" fill="#F79E1B"B" opacity=" opacity="0.0.88"/>
+                    </"/>
+                    </svgsvg>
+                    <svg view>
+                    <svg viewBox="Box="0 0 0 0 140 140 40"40" xmlns=" xmlns="http://http://www.wwww.w3.org3.org/200/2000/s0/svg"vg" aria-label aria-label="Western="Western Union Union">
+                       ">
+                        <rect width <rect width="140="140" height" height="40="40" rx" rx="6="6" fill" fill="#FF="#FFD100D100"/>
+                       "/>
+                        <text <text x=" x="70"70" y=" y="25"25" font-family font-family="A="Arial,rial, Helvetica Helvetica, sans, sans-serif" font-weight-serif" font-weight="bold="bold" font" font-size-size="="12"12" fill="# fill="#000"000" text-an text-anchor="chor="middle">middle">WESTWESTERN UNION</text>
+                    </svgERN UNION</text>
                     </svg>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
-                    <svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg" aria-label="Mastercard">
-                        <rect width="100" height="40" rx="6" fill="white"/>
-                        <circle cx="35" cy="20" r="12" fill="#EB001B"/>
-                        <circle cx="50" cy="20" r="12" fill="#F79E1B" opacity="0.8"/>
-                    </svg>
-                    <svg viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg" aria-label="Western Union">
-                        <rect width="140" height="40" rx="6" fill="#FFD100"/>
-                        <text x="70" y="25" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="12" fill="#000" text-anchor="middle">WESTERN UNION</text>
-                    </svg>
-                    <svg viewBox="0 0 150 40" xmlns="http://www.w3.org/2000/svg" aria-label="Alibaba Trade Assurance">
-                        <rect width="150" height="40" rx="6" fill="#FF6A00"/>
-                        <text x="75" y="25" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="12" fill="#FFF" text-anchor="middle">Trade Assurance</text>
-                    </svg>
+                    <svg viewBox="0>
+                    <svg viewBox="0 0 150 40 0 150 40" xmlns" xmlns="http="http://www://www.w3.w3.org/.org/20002000/svg/svg" aria-label="Alibaba" aria-label="Alibaba Trade Assurance Trade Assurance">
+                       ">
+                        <rect <rect width=" width="150"150" height=" height="40"40" rx=" rx="6"6" fill="# fill="#FF6FF6A00"/>
+                        <textA00"/>
+                        <text x=" x="75"75" y=" y="25"25" font-family font-family="A="Arial,rial, Helvetica Helvetica, sans, sans-serif" font-weight="bold-serif" font-weight="bold" font-size="" font-size="12" fill="#FFF" text-anchor="middle">Trade Assurance</text>
+                   12" fill="#FFF" text-anchor="middle">Trade Assurance</text>
+                    </svg </svg>
+                </div>
+            </div>
+           >
                 </div>
             </div>
             <div>
-                <h4>Company Address</h4>
-                <p style="font-size: 14px; color: #aaa; margin-bottom: 10px;">Opposite NBP Best Pharmacy, First Floor, Sialkot.</p>
-                <div style="height: 150px; width: 100%; background: #eee; border: 1px solid #444; border-radius: 4px; overflow: hidden;">
-                    <iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=74.550,32.538,74.558,32.544&layer=mapnik&marker=32.54084,74.55397" style="border: 0;"></iframe>
+                <h4> <div>
+                <h4>Company Address</hCompany Address</h4>
+                <p style="font-size: 14px;4>
+                <p style="font-size: 14px; color: color: #aaa #aaa; margin; margin-bottom: 10px;">Opposite-bottom: 10px;">Opposite NBP NBP Best Pharmacy, First Best Pharmacy, First Floor, Sialkot.</p>
+                <div style="height: 150px; width: 100%; background: #eee; border Floor, Sialkot.</p>
+                <div style="height: 150px; width: 100%; background: #eee; border: : 1px solid #1px solid #444;444; border-radius border-radius: : 4px; overflow: hidden;">
+                    <iframe width="100%" height="4px; overflow: hidden;">
+                    <iframe width="100%" height="100%"100%" frameborder="0" frameborder="0" src="https://www.open src="https://www.openstreetmapstreetmap.org/.org/export/export/embed.html?bboxembed.html?bbox=74=74.550,32.538,74.558,32.544&layer=mapnik&marker=32.54084,74.55397" style="border.550,32.538,74.558,32.544&layer=mapnik&marker=32.54084,74.55397" style="border: : 0;"></iframe>
                 </div>
             </div>
-        </div>
-        <p style="text-align:center; margin-top:40px; color:#666; font-size:12px;">© 2026 TraditionX Industry. All rights reserved.</p>
+        </0;"></iframe>
+                </div>
+            </div>
+        </divdiv>
+       >
+        <p style="text-align:center; margin-top:40 <p style="text-align:center; margin-top:40px;px; color:#666; font-size:12px;">© 2026 TraditionX Industry. color:#666; font-size:12px;">© 2026 TraditionX Industry. All rights reserved.</p>
+    </footer All rights reserved.</p>
     </footer>
 
     <script>
-        // Navigation Logic
-        function toggleMobileMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+        // Navigation Logic>
 
-        function showPage(pId) {
-            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
-            document.getElementById(pId).classList.add('active');
+    <script>
+        // Navigation Logic
+       
+        function toggle function toggleMobileMenu() { document.getElementByIdMobileMenu() { document.getElementById('nav('navLinks').classList.toggle('active'); }
+
+        function showPage(pIdLinks').classList.toggle('active'); }
+
+        function showPage(pId)) {
+            document {
+            document.querySelectorAll.querySelectorAll('.page-section').forEach(s => s.classList.remove('active('.page-section').forEach(s => s.classList.remove('active'));
+           '));
+            document.getElementById document.getElementById(pId(pId).class).classList.addList.add('active('active');
+           ');
             document.getElementById('navLinks').classList.remove('active');
             window.scrollTo(0, 0);
-            if (pId === 'sportswear') {
-                renderSportswearGallery();
-                sportswearShow(0);
+            if (pId === ' document.getElementById('navLinks').classList.remove('active');
+            window.scrollTo(0, 0);
+            if (pId === 'sportsportswearswear')') {
+                render {
+                renderSportswSportswearGalleryearGallery();
+               ();
+                sportsw sportswearShowearShow(0(0);
+               );
                 resetSportswearTimer();
+            resetSportswearTimer();
             }
         }
 
         // Main Slider
         let sIdx = 0;
+        const slides = document.querySelectorAll('.slider-container .slide }
+        }
+
+        // Main Slider
+        let sIdx = 0;
         const slides = document.querySelectorAll('.slider-container .slide');
+        set');
         setInterval(() => {
             if (!slides.length) return;
-            slides[sIdx].classList.remove('active');
-            sIdx = (sIdx + 1) % slides.length;
+            slides[sIdx].classList.removeInterval(() => {
+            if (!slides.length) return;
+            slides[sIdx].classList.remove('active('active');
+            sIdx = (sIdx + 1)');
+            sIdx = (sIdx + 1) % slides % slides.length.length;
+            slides[sIdx].classList.add('active');
+        }, 3000;
             slides[sIdx].classList.add('active');
         }, 3000);
 
-        // Product Viewer Logic
+       );
+
+        // Product // Product Viewer Logic Viewer Logic
+        let p
         let pIdx = 0;
-        const pSlides = document.querySelectorAll('.prod-slide');
+       Idx = 0;
+        const p const pSlides = document.querySelectorAll('.prod-slideSlides = document.querySelectorAll('.prod-slide');
+
+        function prodMove(dir) {
+            if (!p');
 
         function prodMove(dir) {
             if (!pSlides.length) return;
+            pSlides[pIdx].classList.remove('activeSlides.length) return;
             pSlides[pIdx].classList.remove('active');
-            pIdx = (pIdx + dir + pSlides.length) % pSlides.length;
-            pSlides[pIdx].classList.add('active');
+           ');
+            pIdx = (pIdx pIdx = (pIdx + dir + dir + p + pSlSlidesides.length).length) % pSlides % pSlides.length.length;
+            p;
+            pSlidesSlides[pIdx[pIdx].class].classList.addList.add('active('active');
+            resetZoom();
+        }
+        setInterval(() => prodMove(1), 3000);
+
+        function zoom(e)');
             resetZoom();
         }
         setInterval(() => prodMove(1), 3000);
 
         function zoom(e) {
-            const v = document.getElementById('viewer');
+            {
+            const v = document.getElementById('viewer const v = document.getElementById('viewer');
+            const l = document.getElementById('l');
             const l = document.getElementById('lens');
-            if (!v || !l) return;
+            if (!v ||ens');
+            if (!v || !l !l) return;
             const rect = v.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+            const) return;
+            const rect = v.getBoundingClientRect();
+            const x = x = e.client e.clientX - rect.left;
+           X - rect.left;
+            const y const y = e.clientY - rect.top;
             const activeSlide = document.querySelector('.prod-slide.active');
-            if (!activeSlide) return;
-            l.style.backgroundImage = "url('" + activeSlide.src + "')";
-            l.style.backgroundSize = (rect.width * 2) + 'px ' + (rect.height * 2) + 'px';
-            l.style.backgroundPosition = '-' + (x * 2 - l.offsetWidth / 2) + 'px -' + (y * 2 - l.offsetHeight / 2) +
+            if (! = e.clientY - rect.top;
+            const activeSlide = document.querySelector('.prod-slide.active');
+            if (!activeSlideactiveSlide) return) return;
+            l.style;
+            l.style.backgroundImage = "url('".backgroundImage = "url('" + activeSlide.src + "')";
+            l.style. + activeSlide.src + "')";
+            l.style.backgroundSize = (rect.width * 2) + 'px ' + (backgroundSize = (rect.width * 2) + 'px ' + (rect.heightrect.height *  * 2)2) + ' + 'pxpx';
+            l';
+            l.style..style.backgroundPosition = '-'backgroundPosition = '-' + ( + (x * 2x * 2 - l.offset - l.offsetWidth /Width / 2) + 2) + 'px -' + ( 'px -' + (y * 2 - l.offsetHeight / 2) +
+                'pxy * 2 - l.offsetHeight / 2) +
                 'px';
+       ';
         }
 
-        function resetZoom() {
+        function }
+
+        function resetZoom resetZoom() {
+            const() {
             const l = document.getElementById('lens');
+            if (l) {
+                l.style. l = document.getElementById('lens');
             if (l) {
                 l.style.backgroundImage = 'none';
                 l.style.display = 'none';
-                setTimeout(() => { l.style.display = ''; }, 50);
+                setTimeoutbackgroundImage = 'none';
+                l.style.display = 'none';
+                setTimeout(() =>(() => { l.style.display = '' { l.style.display = ''; }, 50);
             }
         }
 
         function toggleChat() {
-            const chat = document.getElementById('chatbot');
-            chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
+           ; }, 50);
+            }
+        }
+
+        function toggleChat() {
+            const chat = document.getElementById('chatbot const chat = document.getElementById('chatbot');
+           ');
+            chat.style.display = chat.style.display === chat.style.display = chat.style.display === 'flex 'flex'' ? 'none' : 'flex';
+        ? 'none' : 'flex';
         }
 
         function sendChat() {
-            const input = document.getElementById('chat-in');
-            const logs = document.getElementById('chat-logs');
+            }
+
+        function sendChat() {
+            const input = document const input = document.getElementById('chat-in');
+            const logs.getElementById('chat-in');
+            const logs = document = document.getElementById('chat-l.getElementById('chat-logs');
             const msg = input.value.trim();
-            if (!msg) return;
+            if (!msgogs');
+            const msg = input.value.trim();
+            if (!msg) return) return;
+            logs.innerHTML;
             logs.innerHTML +=
-                '<div style="background:#cde2f5; padding:10px; border-radius:10px; margin-bottom:8px; font-size:13px; text-align:right;">' +
+                '<div style="background:#cde2f5; padding:10px; border-radius:10px; margin-bottom:8px; font-size:13px; text-align:right +=
+                '<div style="background:#cde2f5; padding:10px; border-radius:10px; margin-bottom:8px; font-size:13px; text-align:right;">';">' +
+                +
                 msg + '</div>';
             input.value = '';
-            setTimeout(() => {
-                const responses = [
-                    "Thanks for your message! Our team will get back to you shortly.",
-                    "We offer competitive pricing for bulk orders. Would you like a quote?",
-                    "Our manufacturing facility in Sialkot is equipped with the latest machinery.",
+            setTimeout msg + '</div>';
+            input.value = '';
+            setTimeout(() =>(() => {
+                {
+                const responses const responses = = [
+                    " [
+                    "Thanks forThanks for your message your message! Our! Our team will team will get back get back to you to you shortly shortly.",
+                    ".",
+                    "We offerWe offer competitive pricing competitive pricing for bulk orders. Would you for bulk orders. Would you like a like a quote? quote?",
+                   ",
+                    "Our "Our manufacturing facility manufacturing facility in S in Sialkotialkot is equipped is equipped with the with the latest machinery.",
+                    "You can download our catalog from the Products page latest machinery.",
                     "You can download our catalog from the Products page for detailed specifications.",
-                    "We ship worldwide with reliable logistics partners. Ask us about shipping to your region!"
+                    "We ship worldwide with reliable logistics for detailed specifications.",
+                    "We ship worldwide with reliable logistics partners. partners. Ask us Ask us about shipping to your region!"
                 ];
-                const reply = responses[Math.floor(Math.random() * responses.length)];
+                const reply = responses[Math.floor about shipping to your region!"
+                ];
+                const reply = responses[Math.floor(Math.random(Math.random() *() * responses.length)];
                 logs.innerHTML +=
-                    '<div style="background:#dadde2; padding:10px; border-radius:10px; margin-bottom:8px; font-size:13px;">' +
+                    '< responses.length)];
+                logs.innerHTML +=
+                    '<div style="background:#dadde2; paddingdiv style="background:#dadde2; padding:10:10px;px; border-radius border-radius:10:10px;px; margin-bottom:8 margin-bottom:8px; font-size:13px;">' +
+                    reply + '</divpx; font-size:13px;">' +
                     reply + '</div>';
-                logs.scrollTop = logs.scrollHeight;
+                logs>';
+                logs.scroll.scrollTop = logs.scrollHeight;
+            }, Top = logs.scrollHeight;
             }, 600);
         }
 
-        // ==================== SPORTSWEAR GALLERY LOGIC ====================
-        const sportswearImages = Array.from({ length: 44 }, (_, i) => 'a2 (' + (i + 1) + ').jpeg');
+        //600);
+        }
+
+        // ==================== SPORTSWEAR G ==================== SPORTSWEAR GALLERY LOGIC ====================
+        const sportswearImages = ArrayALLERY LOGIC ====================
+        const sportswearImages = Array.from({.from({ length: length: 44 }, (_, i) => 'a2 (' + ( 44 }, (_, i) => 'a2 (' + (i +i + 1) + ').jpeg');
         let swIdx = 0;
         let swTimer = null;
 
-        function renderSportswearGallery() {
-            const viewer = document.getElementById('sportswearViewer');
-            const thumbs = document.getElementById('sportswearThumbs');
+        function renderSport 1) + ').jpeg');
+        let swIdx = 0;
+        let swTimer = null;
+
+        function renderSportswearswearGallery()Gallery() {
+            {
+            const viewer const viewer = document = document.getElementById('.getElementById('sportswearViewer');
+            const thumbs = documentsportswearViewer');
+            const thumbs = document.getElementById('sport.getElementById('sportswearswearThumbs');
+            if (!viewer || !thumbs) returnThumbs');
             if (!viewer || !thumbs) return;
 
+           ;
+
             // Remove existing slides (preserve arrow buttons)
-            const existingSlides = viewer.querySelectorAll('.sportswear-slide');
-            existingSlides.forEach(el => el.remove());
-            thumbs.innerHTML = '';
+            const // Remove existing slides (preserve arrow buttons)
+            const existingSl existingSlides = viewer.querySelectorides = viewer.querySelectorAll('.sportswear-slide');
+            existingSlAll('.sportswear-slide');
+            existingSlides.forEachides.forEach(el =>(el => el.remove el.remove());
+           ());
+            thumbs.innerHTML thumbs.innerHTML = '';
+
+            // Append images in order so DOM order matches index order = '';
 
             // Append images in order so DOM order matches index order
+            sportswear
             sportswearImages.forEach((src, index) => {
+                const imgImages.forEach((src, index) => {
                 const img = document.createElement('img');
-                img.src = src;
-                img.alt = 'Sportswear ' + (index + 1);
-                img.className = 'sportswear-slide' + (index === 0 ? ' active' : '');
-                img.setAttribute('data-index', index);
-                viewer.appendChild(img);
+                img = document.createElement('img');
+                img.src =.src = src;
+                img src;
+                img.alt.alt = ' = 'Sportswear 'Sportswear ' + (index + 1);
+                img.className = 's + (index + 1);
+                img.className = 'sportswear-slide' + (index ===portswear-slide' + (index === 0 0 ? ' ? ' active' : ' active' : '');
+                img.set');
+                img.setAttribute('Attribute('data-indexdata-index', index', index);
+               );
+                viewer.appendChild viewer.appendChild(img(img);
 
-                const thumb = document.createElement('img');
+                const);
+
+                const thumb = thumb = document.createElement document.createElement('img');
                 thumb.src = src;
-                thumb.alt = 'Thumb ' + (index + 1);
-                thumb.className = 'sportswear-thumb' + (index === 0 ? ' active' : '');
-                thumb.setAttribute('data-index', index);
+               ('img');
+                thumb.src = src;
+                thumb. thumb.alt =alt = 'Thumb ' + (index + 1);
+                'Thumb ' + (index + 1);
+                thumb.className = 'sportswear-thumb' + (index === 0 thumb.className = 'sportswear-thumb' + (index === 0 ? ' active' : '');
+                thumb.setAttribute('data-index ? ' active' : '');
+                thumb.setAttribute('data-index', index', index);
+                thumb.on);
                 thumb.onclick = function() {
-                    const idx = parseInt(this.getAttribute('data-index'));
+                    const idx = parseIntclick = function() {
+                    const idx = parseInt(this.get(this.getAttribute('Attribute('data-indexdata-index'));
+                    sportswearShow(idx);
+                    reset'));
                     sportswearShow(idx);
                     resetSportswearTimer();
+               SportswearTimer();
                 };
+                thumbs.appendChild(thumb);
+            };
                 thumbs.appendChild(thumb);
             });
 
+            });
+
             // Reset index
-            swIdx = 0;
-            updateSportswearCounter();
+            sw // Reset index
+            swIdx =Idx = 0 0;
+           ;
+            updateSportswear updateSportswearCounter();
+        }
+
+        functionCounter();
         }
 
         function sportswearShow(index) {
-            const slides = document.querySelectorAll('#sportswearViewer .sportswear-slide');
-            const thumbs = document.querySelectorAll('.sportswear-thumb');
-            if (!slides.length) return;
+            const slides = document.querySelectorAll('#sportsw sportswearShow(index) {
+            const slides = document.querySelectorAll('#sportswearViewearViewer .er .sportswear-slide');
+            const thumbs = document.querySelectorAll('.ssportswear-slide');
+            const thumbs = document.querySelectorAll('.sportswportswear-thear-thumbumb');
+            if');
+            if (!slides (!slides.length).length) return return;
 
             // Remove active from current
-            if (slides[swIdx]) slides[swIdx].classList.remove('active');
-            if (thumbs[swIdx]) thumbs[swIdx].classList.remove('active');
+            if (slides;
 
-            // Calculate new index with wrapping
-            swIdx = (index + slides.length) % slides.length;
+            // Remove active from current
+            if (slides[swIdx[swIdx]) slides[swIdx].classList.remove('active');
+            if (th]) slides[swIdx].classList.remove('active');
+            if (thumbsumbs[swIdx]) thumbs[swIdx].classList.remove('[swIdx]) thumbs[swIdx].classList.remove('activeactive');
+
+            //');
+
+            // Calculate new Calculate new index with index with wrapping wrapping
+            swIdx = (index + slides
+            swIdx = (index + slides.length).length) % slides % slides.length.length;
+
+            // Add active to new;
 
             // Add active to new
-            if (slides[swIdx]) slides[swIdx].classList.add('active');
+           
+            if ( if (slides[swIdxslides[swIdx]) slides[swIdx].classList.add('active');
+            if (thumbs[swIdx]) {
+                thumbs[swIdx].]) slides[swIdx].classList.add('active');
             if (thumbs[swIdx]) {
                 thumbs[swIdx].classList.add('active');
-                // Auto-scroll the thumbnail strip to keep active thumb visible
-                thumbs[swIdx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                //classList.add('active');
+                // Auto-sc Auto-scroll theroll the thumbnail strip thumbnail strip to keep to keep active thumb visible
+                thumbs[swIdx]. active thumb visible
+                thumbs[swIdx].scrollIntoscrollIntoViewView({ behavior:({ behavior: 's 'smooth',mooth', block: block: 'nearest', inline: 'nearest', inline: 'center 'center' });
+            }
+
+            updateSportswearCounter();
+        }
+
+       ' });
             }
 
             updateSportswearCounter();
@@ -1257,38 +1455,75 @@
 
         function sportswearMove(dir) {
             sportswearShow(swIdx + dir);
+            resetSportswearTimer function sportswearMove(dir) {
+            sportswearShow(swIdx + dir);
             resetSportswearTimer();
+       ();
         }
 
+        function }
+
         function updateSportswearCounter() {
-            const counter = document.getElementById('sportswearCounter');
+            const counter = document updateSportswearCounter() {
+            const counter = document.getElementById('.getElementById('sportsportswearswearCounterCounter');
             if (counter) {
-                counter.textContent = (swIdx + 1) + ' / ' + sportswearImages.length;
+                counter.textContent = (');
+            if (counter) {
+                counter.textContent = (swIdxswIdx +  + 1)1) + ' / ' + sportswearImages.length;
+            + ' / ' + sportswearImages.length;
             }
         }
 
         function resetSportswearTimer() {
             if (swTimer) clearInterval(swTimer);
-            swTimer = setInterval(() => sportswearMove(1), 4000);
+            sw }
+        }
+
+        function resetSportswearTimer() {
+            if (swTimer) clearInterval(swTimer);
+            swTimer = setInterval(() =>Timer = setInterval(() => sportsw sportswearMoveearMove(1), 4000(1), 4000);
+        }
+
+        // Keyboard arrow key support for sportswear section);
         }
 
         // Keyboard arrow key support for sportswear section
-        document.addEventListener('keydown', function(e) {
-            const sportswearSection = document.getElementById('sportswear');
-            if (sportswearSection && sportswearSection.classList.contains('active')) {
+       
+        document.addEventListener('keydown', function(e) document.addEventListener('keydown', function(e) {
+            const {
+            const sportsw sportswearSectionearSection = document = document.getElementById('.getElementById('sportswear');
+            if (sportswear');
+            if (sportsportswearswearSection && sportswearSection.classList.containsSection && sportswearSection.classList.contains('active('active'))')) {
                 if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
+                if (e.key === 'ArrowLeft') {
+                    {
+                    e.preventDefault e.preventDefault();
+                    sportswearMove();
                     sportswearMove(-1);
+                } else if (e.key === 'ArrowRight')(-1);
                 } else if (e.key === 'ArrowRight') {
-                    e.preventDefault();
+                    e {
+                    e.preventDefault.preventDefault();
+                    sport();
                     sportswearMove(1);
+               swearMove(1 }
+           );
                 }
             }
+        }
         });
+
+        // Initial render
+        renderSportswearGallery();
+        resetSportswearTimer });
 
         // Initial render
         renderSportswearGallery();
         resetSportswearTimer();
     </script>
+</body();
+    </script>
 </body>
+</html>
+```>
 </html>
