@@ -127,6 +127,22 @@
             display: block;
         }
 
+
+        /* Sportswear Gallery */
+        .sportswear-layout { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; }
+        .sportswear-main { position: relative; height: 560px; border: 1px solid #ccc; overflow: hidden; background: #e4e7ec; border-radius: 8px; }
+        .sportswear-slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.6s ease; object-fit: contain; background: #e4e7ec; }
+        .sportswear-slide.active { opacity: 1; }
+        .sportswear-thumbs { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-top: 12px; }
+        .sportswear-thumb { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border: 2px solid transparent; border-radius: 6px; cursor: pointer; background: #fff; }
+        .sportswear-thumb.active { border-color: var(--primary-red); }
+        .detail-box { background: #dadde2; padding: 18px 18px; border-radius: 8px; border-left: 5px solid var(--primary-red); margin-bottom: 16px; }
+        .detail-box h3 { margin: 0 0 10px 0; color: var(--primary-red); }
+        .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; font-size: 14px; }
+        .detail-item { background: #eef0f4; padding: 10px 12px; border-radius: 6px; }
+        .sportswear-card { cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .sportswear-card:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(0,0,0,0.10); }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .mobile-menu-btn { display: block; }
@@ -146,6 +162,7 @@
 </head>
 <body>
 
+    <!-- Top Info Bar with language and region -->
     <div class="top-info">
         <span>Deliver to: 🇺🇸 US</span>
         &nbsp;|&nbsp;
@@ -189,6 +206,7 @@
             <img src="banner3.avif" class="slide" alt="B3">
         </div>
 
+        <!-- Our Expertise section moved above -->
         <div class="container" style="margin-top:40px;">
             <h2 style="border-bottom:2px solid var(--primary-red); padding-bottom:10px; text-align:center;">
                 Our Expertise
@@ -205,7 +223,7 @@
                 margin-top:35px;
             ">
 
-                <div onclick="showPage('sportswear-detail')" style="background:#dadde2; padding:22px; border-radius:8px; border-left:5px solid var(--primary-red); cursor: pointer;">
+                <div class="sportswear-card" onclick="showPage('sportswear')" style="background:#dadde2; padding:22px; border-radius:8px; border-left:5px solid var(--primary-red);">
                     <img src="SW.jpeg" alt="Sportswear" style="width:100%; height:auto; border-radius:4px; margin-bottom:15px; display:block;">
                     <h3 style="margin-top:0; color:var(--primary-red);">Sportswear</h3>
                     <p style="font-size:14px; line-height:1.7;">
@@ -295,6 +313,7 @@
             </div>
         </div>
 
+        <!-- Premium Apparel Manufacturing section (moved below) -->
         <div class="container" style="margin-top: 20px; text-align: center;">
             <h2 style="color:var(--primary-red)">Premium Apparel Manufacturing</h2>
             <p>Export-quality garments from the heart of Sialkot. We specialize in OEM/ODM services for global brands.</p>
@@ -316,155 +335,141 @@
         </div>
     </div>
 
-    <div id="sportswear-detail" class="page-section container">
-        <button onclick="showPage('home')" style="background: var(--primary-red); color: white; border: none; padding: 10px 20px; font-weight: bold; border-radius: 4px; cursor: pointer; margin-bottom: 20px; transition: 0.3s;">← Back to Home</button>
-        
-        <h2 style="color: var(--primary-red); border-bottom: 2px solid var(--primary-red); padding-bottom: 10px; margin-top: 0;">SPORTSWEAR</h2>
-        <p style="line-height: 1.8; font-size: 15px; margin-bottom: 30px;">
-            High-quality custom sportswear manufactured with premium fabrics, modern printing techniques, and durable stitching options. Fully customizable according to your brand requirements, colors, designs, and fit preferences.
-        </p>
 
-        <h3 style="color: #1a1a1a; border-left: 4px solid var(--primary-red); padding-left: 10px; margin-bottom: 20px;">Product Gallery</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; margin-bottom: 40px;">
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW1.jpeg" alt="Sportswear 1" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW2.jpeg" alt="Sportswear 2" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW3.jpeg" alt="Sportswear 3" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW4.jpeg" alt="Sportswear 4" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW5.jpeg" alt="Sportswear 5" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW6.jpeg" alt="Sportswear 6" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW7.jpeg" alt="Sportswear 7" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW8.jpeg" alt="Sportswear 8" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW9.jpeg" alt="Sportswear 9" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW10.jpeg" alt="Sportswear 10" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW11.jpeg" alt="Sportswear 11" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW12.jpeg" alt="Sportswear 12" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW13.jpeg" alt="Sportswear 13" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW14.jpeg" alt="Sportswear 14" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW15.jpeg" alt="Sportswear 15" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW16.jpeg" alt="Sportswear 16" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW17.jpeg" alt="Sportswear 17" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW18.jpeg" alt="Sportswear 18" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW19.jpeg" alt="Sportswear 19" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW20.jpeg" alt="Sportswear 20" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW21.jpeg" alt="Sportswear 21" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW22.jpeg" alt="Sportswear 22" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-            <div style="background: #dadde2; padding: 8px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);"><img src="SW23.jpeg" alt="Sportswear 23" style="width: 100%; height: 180px; object-fit: cover; border-radius: 4px;"></div>
-        </div>
-
-        <h3 style="color: #1a1a1a; border-left: 4px solid var(--primary-red); padding-left: 10px; margin-bottom: 20px;">Manufacturing Configurations</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
-            
-            <div style="background: #dadde2; padding: 20px; border-radius: 6px; border-top: 3px solid var(--primary-red);">
-                <h4 style="margin-top: 0; color: var(--primary-red);">Printing Options</h4>
-                <ul style="padding-left: 20px; margin: 0; font-size: 14px; line-height: 1.6;">
-                    <li>Screen Printing</li>
-                    <li>Sublimation Printing</li>
-                    <li>Heat Transfer Printing</li>
-                    <li>Vinyl Printing</li>
-                    <li>Puff Printing</li>
-                    <li>Silicone Printing</li>
-                    <li>Reflective Printing</li>
-                    <li>Embroidery</li>
-                </ul>
+    <div id="sportswear" class="page-section container">
+        <h2 style="border-bottom:2px solid var(--primary-red); padding-bottom:10px;">SPORTSWEAR</h2>
+        <div class="sportswear-layout">
+            <div>
+                <div class="sportswear-main" id="sportswearViewer">
+                    <button class="nav-arrow" onclick="sportswearMove(-1)">&#10094;</button>
+                    <button class="nav-arrow next-arrow" onclick="sportswearMove(1)">&#10095;</button>
+                </div>
+                <div class="sportswear-thumbs" id="sportswearThumbs"></div>
             </div>
+            <div class="details">
+                <div class="detail-box">
+                    <h3>SPORTSWEAR</h3>
+                    <p style="line-height:1.8; margin:0;">
+                        High-quality custom sportswear manufactured with premium fabrics, modern printing techniques, and durable stitching options. Fully customizable according to your brand requirements, colors, designs, and fit preferences.
+                    </p>
+                </div>
 
-            <div style="background: #dadde2; padding: 20px; border-radius: 6px; border-top: 3px solid var(--primary-red);">
-                <h4 style="margin-top: 0; color: var(--primary-red);">Stitching Options</h4>
-                <ul style="padding-left: 20px; margin: 0; font-size: 14px; line-height: 1.6;">
-                    <li>Single Stitch</li>
-                    <li>Double Stitch</li>
-                    <li>Overlock Stitch</li>
-                    <li>Flatlock Stitch</li>
-                    <li>Cover Stitch</li>
-                    <li>Reinforced Stitching</li>
-                    <li>Contrast Stitching</li>
-                </ul>
+                <div class="detail-box">
+                    <h3>Printing Options</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">Screen Printing</div>
+                        <div class="detail-item">Sublimation Printing</div>
+                        <div class="detail-item">Heat Transfer Printing</div>
+                        <div class="detail-item">Vinyl Printing</div>
+                        <div class="detail-item">Puff Printing</div>
+                        <div class="detail-item">Silicone Printing</div>
+                        <div class="detail-item">Reflective Printing</div>
+                        <div class="detail-item">Embroidery</div>
+                    </div>
+                </div>
+
+                <div class="detail-box">
+                    <h3>Stitching Options</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">Single Stitch</div>
+                        <div class="detail-item">Double Stitch</div>
+                        <div class="detail-item">Overlock Stitch</div>
+                        <div class="detail-item">Flatlock Stitch</div>
+                        <div class="detail-item">Cover Stitch</div>
+                        <div class="detail-item">Reinforced Stitching</div>
+                        <div class="detail-item">Contrast Stitching</div>
+                    </div>
+                </div>
+
+                <div class="detail-box">
+                    <h3>Fabric Options</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">Polyester Fabric</div>
+                        <div class="detail-item">Polyester Spandex</div>
+                        <div class="detail-item">Dry Fit Fabric</div>
+                        <div class="detail-item">Mesh Fabric</div>
+                        <div class="detail-item">Interlock Fabric</div>
+                        <div class="detail-item">Jersey Fabric</div>
+                        <div class="detail-item">Cotton Blend Fabric</div>
+                        <div class="detail-item">French Terry Fabric</div>
+                        <div class="detail-item">Lycra Fabric</div>
+                        <div class="detail-item">Quick-Dry Fabric</div>
+                    </div>
+                </div>
+
+                <div class="detail-box">
+                    <h3>GSM Options</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">120 GSM</div>
+                        <div class="detail-item">140 GSM</div>
+                        <div class="detail-item">160 GSM</div>
+                        <div class="detail-item">180 GSM</div>
+                        <div class="detail-item">200 GSM</div>
+                        <div class="detail-item">220 GSM</div>
+                        <div class="detail-item">240 GSM</div>
+                        <div class="detail-item">Custom GSM Available</div>
+                    </div>
+                </div>
+
+                <div class="detail-box">
+                    <h3>Color Options</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">Black</div>
+                        <div class="detail-item">White</div>
+                        <div class="detail-item">Red</div>
+                        <div class="detail-item">Navy Blue</div>
+                        <div class="detail-item">Royal Blue</div>
+                        <div class="detail-item">Grey</div>
+                        <div class="detail-item">Green</div>
+                        <div class="detail-item">Yellow</div>
+                        <div class="detail-item">Orange</div>
+                        <div class="detail-item">Purple</div>
+                        <div class="detail-item">Custom Pantone Colors</div>
+                    </div>
+                </div>
+
+                <div class="detail-box">
+                    <h3>Product Range</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">Sports Jerseys</div>
+                        <div class="detail-item">Gym Wear</div>
+                        <div class="detail-item">Compression Wear</div>
+                        <div class="detail-item">Training Wear</div>
+                        <div class="detail-item">Sports Shorts</div>
+                        <div class="detail-item">Performance T-Shirts</div>
+                        <div class="detail-item">Hoodies</div>
+                        <div class="detail-item">Sweatshirts</div>
+                        <div class="detail-item">Joggers</div>
+                        <div class="detail-item">Leggings</div>
+                        <div class="detail-item">Tank Tops</div>
+                        <div class="detail-item">Tracksuits</div>
+                    </div>
+                </div>
+
+                <div class="detail-box">
+                    <h3>Customization Features</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">Custom Logos</div>
+                        <div class="detail-item">Player Names &amp; Numbers</div>
+                        <div class="detail-item">Woven Labels</div>
+                        <div class="detail-item">Printed Labels</div>
+                        <div class="detail-item">Hang Tags</div>
+                        <div class="detail-item">Custom Packaging</div>
+                        <div class="detail-item">Private Label Manufacturing</div>
+                    </div>
+                </div>
+
+                <div class="detail-box">
+                    <h3>Available Fits &amp; Sizes</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">Regular Fit</div>
+                        <div class="detail-item">Slim Fit</div>
+                        <div class="detail-item">Oversized Fit</div>
+                        <div class="detail-item">Compression Fit</div>
+                    </div>
+                    <p style="margin:12px 0 0 0; line-height:1.8;">Available in Youth, Men’s, Women’s, and Plus Sizes.</p>
+                </div>
             </div>
-
-            <div style="background: #dadde2; padding: 20px; border-radius: 6px; border-top: 3px solid var(--primary-red);">
-                <h4 style="margin-top: 0; color: var(--primary-red);">Fabric Options</h4>
-                <ul style="padding-left: 20px; margin: 0; font-size: 14px; line-height: 1.6;">
-                    <li>Polyester Fabric</li>
-                    <li>Polyester Spandex</li>
-                    <li>Dry Fit Fabric</li>
-                    <li>Mesh Fabric</li>
-                    <li>Interlock Fabric</li>
-                    <li>Jersey Fabric</li>
-                    <li>Cotton Blend Fabric</li>
-                    <li>French Terry Fabric</li>
-                    <li>Lycra Fabric</li>
-                    <li>Quick-Dry Fabric</li>
-                </ul>
-            </div>
-
-            <div style="background: #dadde2; padding: 20px; border-radius: 6px; border-top: 3px solid var(--primary-red);">
-                <h4 style="margin-top: 0; color: var(--primary-red);">GSM Options</h4>
-                <ul style="padding-left: 20px; margin: 0; font-size: 14px; line-height: 1.6;">
-                    <li>120 GSM</li>
-                    <li>140 GSM</li>
-                    <li>160 GSM</li>
-                    <li>180 GSM</li>
-                    <li>200 GSM</li>
-                    <li>220 GSM</li>
-                    <li>240 GSM</li>
-                    <li>Custom GSM Available</li>
-                </ul>
-            </div>
-
-            <div style="background: #dadde2; padding: 20px; border-radius: 6px; border-top: 3px solid var(--primary-red);">
-                <h4 style="margin-top: 0; color: var(--primary-red);">Color Options</h4>
-                <ul style="padding-left: 20px; margin: 0; font-size: 14px; line-height: 1.6;">
-                    <li>Black</li>
-                    <li>White</li>
-                    <li>Red</li>
-                    <li>Navy Blue</li>
-                    <li>Royal Blue</li>
-                    <li>Grey</li>
-                    <li>Green</li>
-                    <li>Yellow</li>
-                    <li>Orange</li>
-                    <li>Purple</li>
-                    <li>Custom Pantone Colors</li>
-                </ul>
-            </div>
-
-            <div style="background: #dadde2; padding: 20px; border-radius: 6px; border-top: 3px solid var(--primary-red);">
-                <h4 style="margin-top: 0; color: var(--primary-red);">Product Range</h4>
-                <ul style="padding-left: 20px; margin: 0; font-size: 14px; line-height: 1.6;">
-                    <li>Sports Jerseys</li>
-                    <li>Gym Wear</li>
-                    <li>Compression Wear</li>
-                    <li>Training Wear</li>
-                    <li>Sports Shorts</li>
-                    <li>Performance T-Shirts</li>
-                    <li>Hoodies</li>
-                    <li>Sweatshirts</li>
-                    <li>Joggers</li>
-                    <li>Leggings</li>
-                    <li>Tank Tops</li>
-                    <li>Tracksuits</li>
-                </ul>
-            </div>
-
-            <div style="background: #dadde2; padding: 20px; border-radius: 6px; border-top: 3px solid var(--primary-red);">
-                <h4 style="margin-top: 0; color: var(--primary-red);">Customization Features</h4>
-                <ul style="padding-left: 20px; margin: 0; font-size: 14px; line-height: 1.6;">
-                    <li>Custom Logos</li>
-                    <li>Player Names & Numbers</li>
-                    <li>Woven Labels</li>
-                    <li>Printed Labels</li>
-                    <li>Hang Tags</li>
-                    <li>Custom Packaging</li>
-                    <li>Private Label Manufacturing</li>
-                </ul>
-            </div>
-
-            <div style="background: #dadde2; padding: 20px; border-radius: 6px; border-top: 3px solid var(--primary-red);">
-                <h4 style="margin-top: 0; color: var(--primary-red);">Fits & Sizes</h4>
-                <p style="font-size:14px; line-height:1.5; margin: 0 0 10px 0;"><strong>Available Fits:</strong> Regular Fit, Slim Fit, Oversized Fit, Compression Fit.</p>
-                <p style="font-size:14px; line-height:1.5; margin: 0;">Available in Youth, Men’s, Women’s, and Plus Sizes.</p>
-            </div>
-
         </div>
     </div>
 
@@ -603,4 +608,137 @@
                     </svg>
                     <svg viewBox="0 0 170 40" xmlns="http://www.w3.org/2000/svg" aria-label="Payoneer">
                         <rect width="170" height="40" rx="6" fill="white"/>
-                        <circle cx="20" cy="20" r="10" fill="#F2
+                        <circle cx="20" cy="20" r="10" fill="#F28C28"/>
+                        <path d="M15 20 L19 24 L27 15" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <text x="40" y="27" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#111">Payoneer</text>
+                    </svg>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                    <svg viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg" aria-label="Mastercard">
+                        <rect width="100" height="40" rx="6" fill="white"/>
+                        <circle cx="35" cy="20" r="12" fill="#EB001B"/>
+                        <circle cx="50" cy="20" r="12" fill="#F79E1B" opacity="0.8"/>
+                    </svg>
+                    <svg viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg" aria-label="Western Union">
+                        <rect width="140" height="40" rx="6" fill="#FFD100"/>
+                        <text x="70" y="25" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="12" fill="#000" text-anchor="middle">WESTERN UNION</text>
+                    </svg>
+                    <svg viewBox="0 0 150 40" xmlns="http://www.w3.org/2000/svg" aria-label="Alibaba Trade Assurance">
+                        <rect width="150" height="40" rx="6" fill="#FF6A00"/>
+                        <text x="75" y="25" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="12" fill="#FFF" text-anchor="middle">Trade Assurance</text>
+                    </svg>
+                </div>
+            </div>
+            <div>
+                <h4>Company Address</h4>
+                <p style="font-size: 14px; color: #aaa; margin-bottom: 10px;">Opposite NBP Best Pharmacy, First Floor, Sialkot.</p>
+                <div style="height: 150px; width: 100%; background: #eee; border: 1px solid #444; border-radius: 4px; overflow: hidden;">
+                    <iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=74.550,32.538,74.558,32.544&layer=mapnik&marker=32.54084,74.55397" style="border: 0;"></iframe>
+                </div>
+            </div>
+        </div>
+        <p style="text-align:center; margin-top:40px; color:#666; font-size:12px;">© 2026 TraditionX Industry. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Navigation Logic
+        function toggleMobileMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+        function showPage(pId) {
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(pId).classList.add('active');
+            document.getElementById('navLinks').classList.remove('active');
+            window.scrollTo(0,0);
+            if (pId === 'sportswear') { renderSportswearGallery(); sportswearShow(0); resetSportswearTimer(); }
+        }
+
+        // Main Slider
+        let sIdx = 0;
+        const slides = document.querySelectorAll('.slider-container .slide');
+        setInterval(() => {
+            slides[sIdx].classList.remove('active');
+            sIdx = (sIdx + 1) % slides.length;
+            slides[sIdx].classList.add('active');
+        }, 3000);
+
+        // Product Viewer Logic
+        let pIdx = 0;
+        const pSlides = document.querySelectorAll('.prod-slide');
+        function prodMove(dir) {
+            pSlides[pIdx].classList.remove('active');
+            pIdx = (pIdx + dir + pSlides.length) % pSlides.length;
+            pSlides[pIdx].classList.add('active');
+            resetZoom();
+        }
+        setInterval(() => prodMove(1), 3000);
+
+        function zoom(e) {
+            const v = document.getElementById('viewer');
+            const l = document.getElementById('lens');
+            // Complete function stub for valid parsing execution
+        }
+        function resetZoom() {
+            // Complete function stub for valid parsing execution
+        }
+        function toggleChat() {
+            const chat = document.getElementById('chatbot');
+            chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
+        }
+        function sendChat() {
+            // Complete function stub for valid parsing execution
+        }
+
+        // Sportswear Gallery Logic
+        const sportswearImages = Array.from({ length: 23 }, (_, i) => `SW${i + 1}.jpeg`);
+        let swIdx = 0;
+        let swTimer = null;
+
+        function renderSportswearGallery() {
+            const viewer = document.getElementById('sportswearViewer');
+            const thumbs = document.getElementById('sportswearThumbs');
+            if (!viewer || !thumbs) return;
+
+            const existingMain = viewer.querySelectorAll('.sportswear-slide');
+            existingMain.forEach(el => el.remove());
+            thumbs.innerHTML = '';
+
+            sportswearImages.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `Sportswear ${index + 1}`;
+                img.className = 'sportswear-slide' + (index === 0 ? ' active' : '');
+                viewer.insertBefore(img, viewer.firstChild);
+
+                const thumb = document.createElement('img');
+                thumb.src = src;
+                thumb.alt = `Thumb ${index + 1}`;
+                thumb.className = 'sportswear-thumb' + (index === 0 ? ' active' : '');
+                thumb.onclick = () => sportswearShow(index);
+                thumbs.appendChild(thumb);
+            });
+        }
+
+        function sportswearShow(index) {
+            const slides = document.querySelectorAll('#sportswearViewer .sportswear-slide');
+            const thumbs = document.querySelectorAll('.sportswear-thumb');
+            if (!slides.length) return;
+            slides[swIdx].classList.remove('active');
+            thumbs[swIdx].classList.remove('active');
+            swIdx = (index + slides.length) % slides.length;
+            slides[swIdx].classList.add('active');
+            thumbs[swIdx].classList.add('active');
+        }
+
+        function sportswearMove(dir) {
+            sportswearShow(swIdx + dir);
+            resetSportswearTimer();
+        }
+
+        function resetSportswearTimer() {
+            if (swTimer) clearInterval(swTimer);
+            swTimer = setInterval(() => sportswearMove(1), 3000);
+        }
+
+        renderSportswearGallery();
+        resetSportswearTimer();
+    </script>
+</body>
+</html>
