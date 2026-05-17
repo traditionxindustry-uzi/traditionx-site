@@ -1,17 +1,26 @@
 <script>
     // Navigation Logic
-    function toggleMobileMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+    function toggleMobileMenu() {
+        document.getElementById('navLinks').classList.toggle('active');
+    }
+
     function showPage(pId) {
         document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
         document.getElementById(pId).classList.add('active');
         document.getElementById('navLinks').classList.remove('active');
-        window.scrollTo(0,0);
-        if (pId === 'sportswear') { renderSportswearGallery(); sportswearShow(0); resetSportswearTimer(); }
+        window.scrollTo(0, 0);
+
+        if (pId === 'sportswear') {
+            renderSportswearGallery();
+            sportswearShow(0);
+            resetSportswearTimer();
+        }
     }
 
     // Main Slider
     let sIdx = 0;
     const slides = document.querySelectorAll('.slider-container .slide');
+
     setInterval(() => {
         slides[sIdx].classList.remove('active');
         sIdx = (sIdx + 1) % slides.length;
@@ -21,25 +30,67 @@
     // Product Viewer Logic
     let pIdx = 0;
     const pSlides = document.querySelectorAll('.prod-slide');
+
     function prodMove(dir) {
         pSlides[pIdx].classList.remove('active');
         pIdx = (pIdx + dir + pSlides.length) % pSlides.length;
         pSlides[pIdx].classList.add('active');
         resetZoom();
     }
+
     setInterval(() => prodMove(1), 3000);
 
     function zoom(e) {
         const v = document.getElementById('viewer');
         const l = document.getElementById('lens');
     }
+
     function resetZoom() {
     }
+
+    // Chatbot
     function toggleChat() {
         const chat = document.getElementById('chatbot');
         chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
     }
+
     function sendChat() {
+        const input = document.getElementById('chat-in');
+        const logs = document.getElementById('chat-logs');
+
+        if (input.value.trim() === '') return;
+
+        const userMsg = document.createElement('div');
+        userMsg.style.cssText = `
+            background:#e62e2e;
+            color:white;
+            padding:10px;
+            border-radius:10px;
+            margin-bottom:10px;
+            font-size:13px;
+            text-align:right;
+        `;
+        userMsg.innerText = input.value;
+
+        logs.appendChild(userMsg);
+
+        const botMsg = document.createElement('div');
+        botMsg.style.cssText = `
+            background:#dadde2;
+            padding:10px;
+            border-radius:10px;
+            margin-bottom:10px;
+            font-size:13px;
+        `;
+        botMsg.innerText = "Thank you for contacting TraditionX Industry. Our team will respond shortly.";
+
+        setTimeout(() => {
+            logs.appendChild(botMsg);
+            logs.scrollTop = logs.scrollHeight;
+        }, 500);
+
+        input.value = '';
+        logs.scrollTop = logs.scrollHeight;
     }
 
     // Sportswear Gallery Logic
@@ -75,24 +126,30 @@
     function renderSportswearGallery() {
         const viewer = document.getElementById('sportswearViewer');
         const thumbs = document.getElementById('sportswearThumbs');
+
         if (!viewer || !thumbs) return;
 
         const existingMain = viewer.querySelectorAll('.sportswear-slide');
         existingMain.forEach(el => el.remove());
+
         thumbs.innerHTML = '';
 
         sportswearImages.forEach((src, index) => {
+
             const img = document.createElement('img');
             img.src = src;
             img.alt = `Sportswear ${index + 1}`;
             img.className = 'sportswear-slide' + (index === 0 ? ' active' : '');
+
             viewer.insertBefore(img, viewer.firstChild);
 
             const thumb = document.createElement('img');
             thumb.src = src;
             thumb.alt = `Thumb ${index + 1}`;
             thumb.className = 'sportswear-thumb' + (index === 0 ? ' active' : '');
+
             thumb.onclick = () => sportswearShow(index);
+
             thumbs.appendChild(thumb);
         });
     }
@@ -100,10 +157,14 @@
     function sportswearShow(index) {
         const slides = document.querySelectorAll('#sportswearViewer .sportswear-slide');
         const thumbs = document.querySelectorAll('.sportswear-thumb');
+
         if (!slides.length) return;
+
         slides[swIdx].classList.remove('active');
         thumbs[swIdx].classList.remove('active');
+
         swIdx = (index + slides.length) % slides.length;
+
         slides[swIdx].classList.add('active');
         thumbs[swIdx].classList.add('active');
     }
@@ -115,9 +176,13 @@
 
     function resetSportswearTimer() {
         if (swTimer) clearInterval(swTimer);
-        swTimer = setInterval(() => sportswearMove(1), 3000);
+
+        swTimer = setInterval(() => {
+            sportswearMove(1);
+        }, 3000);
     }
 
+    // Initialize
     renderSportswearGallery();
     resetSportswearTimer();
 </script>
