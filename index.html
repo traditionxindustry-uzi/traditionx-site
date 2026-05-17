@@ -54,7 +54,6 @@
         .image-viewer:hover .zoom-lens { display: block; }
         .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.2); color: white; border: none; padding: 15px; cursor: pointer; z-index: 6; }
         .next-arrow { right: 0; }
-        /* Added explicit left for left arrow */
         .nav-arrow:not(.next-arrow) { left: 0; }
 
         /* Catalog Mobile Fallback Style */
@@ -129,21 +128,63 @@
             display: block;
         }
 
-
         /* Sportswear Gallery */
         .sportswear-layout { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; }
         .sportswear-main { position: relative; height: 560px; border: 1px solid #ccc; overflow: hidden; background: #e4e7ec; border-radius: 8px; }
         .sportswear-slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.6s ease; object-fit: contain; background: #e4e7ec; }
         .sportswear-slide.active { opacity: 1; }
-        .sportswear-thumbs { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-top: 12px; }
-        .sportswear-thumb { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border: 2px solid transparent; border-radius: 6px; cursor: pointer; background: #fff; }
+
+        /* compact, clickable thumbnail strip */
+        .sportswear-thumbs {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 78px;
+            gap: 8px;
+            margin-top: 12px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            scroll-behavior: smooth;
+        }
+        .sportswear-thumb {
+            width: 78px;
+            height: 78px;
+            object-fit: cover;
+            border: 2px solid transparent;
+            border-radius: 6px;
+            cursor: pointer;
+            background: #fff;
+            flex: 0 0 auto;
+        }
         .sportswear-thumb.active { border-color: var(--primary-red); }
+
         .detail-box { background: #dadde2; padding: 18px 18px; border-radius: 8px; border-left: 5px solid var(--primary-red); margin-bottom: 16px; }
         .detail-box h3 { margin: 0 0 10px 0; color: var(--primary-red); }
         .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; font-size: 14px; }
         .detail-item { background: #eef0f4; padding: 10px 12px; border-radius: 6px; }
         .sportswear-card { cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
         .sportswear-card:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(0,0,0,0.10); }
+
+        /* Sportswear category blocks */
+        .sportswear-cat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+        .sportswear-cat {
+            background: #eef0f4;
+            border-radius: 8px;
+            padding: 12px;
+        }
+        .sportswear-cat h4 {
+            margin: 0 0 8px 0;
+            color: var(--primary-red);
+            font-size: 15px;
+        }
+        .sportswear-cat p {
+            margin: 0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
@@ -154,11 +195,12 @@
             .mega-menu { position: static; min-width: 100%; display: none !important; grid-template-columns: 1fr; background: #c02525; padding: 10px 5%; }
             .nav-item.mobile-open .mega-menu { display: block !important; }
             .slider-container { height: 250px; }
-            .product-grid, .overview-grid, .contact-grid { grid-template-columns: 1fr; }
+            .product-grid, .overview-grid, .contact-grid, .sportswear-layout { grid-template-columns: 1fr; }
             .chatbot-toggle { left: 20px; right: auto; width: 60px; height: 60px; }
             .chatbot-box { width: 90%; left: 5%; }
             .desktop-catalog-object { display: none !important; }
             .mobile-catalog-fallback { display: block; }
+            .sportswear-cat-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -266,10 +308,10 @@
                 </div>
 
                 <div style="background:#dadde2; padding:22px; border-radius:8px; border-left:5px solid var(--primary-red);">
-                    <img src="CTU.jpeg" alt="Custom Team Uniforms" style="width:100%; height:auto; border-radius:4px; margin-bottom:15px; display:block;">
-                    <h3 style="margin-top:0; color:var(--primary-red);">Custom Team Uniforms</h3>
+                    <img src="CTU.jpeg" alt="Custom Sports Kits" style="width:100%; height:auto; border-radius:4px; margin-bottom:15px; display:block;">
+                    <h3 style="margin-top:0; color:var(--primary-red);">Custom Sports Kits</h3>
                     <p style="font-size:14px; line-height:1.7;">
-                        Customized uniforms for sports teams, clubs, schools, organizations, and promotional campaigns.
+                        Customized kits for clubs, schools, organizations, and promotional campaigns.
                     </p>
                 </div>
 
@@ -337,7 +379,6 @@
         </div>
     </div>
 
-
     <div id="sportswear" class="page-section container">
         <h2 style="border-bottom:2px solid var(--primary-red); padding-bottom:10px;">SPORTSWEAR</h2>
         <div class="sportswear-layout">
@@ -350,10 +391,40 @@
             </div>
             <div class="details">
                 <div class="detail-box">
-                    <h3>SPORTSWEAR</h3>
+                    <h3>Sportswear Overview</h3>
                     <p style="line-height:1.8; margin:0;">
-                        High-quality custom sportswear manufactured with premium fabrics, modern printing techniques, and durable stitching options. Fully customizable according to your brand requirements, colors, designs, and fit preferences.
+                        Our sportswear collection is built for performance, movement, and durability. It covers training apparel, match-day outfits, gym wear, running sets, and everyday athletic essentials. Every item can be customized in fabric, color, sizing, stitching, print placement, and branding.
                     </p>
+                </div>
+
+                <div class="detail-box">
+                    <h3>Sportswear Categories</h3>
+                    <div class="sportswear-cat-grid">
+                        <div class="sportswear-cat">
+                            <h4>Performance Jerseys</h4>
+                            <p>Lightweight, breathable, and made for match use with options for names, numbers, and sponsor logos.</p>
+                        </div>
+                        <div class="sportswear-cat">
+                            <h4>Training Wear</h4>
+                            <p>Flexible training sets and practice kits designed for comfort during drills, workouts, and warm-ups.</p>
+                        </div>
+                        <div class="sportswear-cat">
+                            <h4>Gym Wear</h4>
+                            <p>Comfortable and stretchable apparel for strength training, cardio sessions, and daily fitness routines.</p>
+                        </div>
+                        <div class="sportswear-cat">
+                            <h4>Compression Wear</h4>
+                            <p>Body-supporting garments that help with fit, movement, and a clean athletic look.</p>
+                        </div>
+                        <div class="sportswear-cat">
+                            <h4>Shorts &amp; Joggers</h4>
+                            <p>Practical bottoms for sports, casual training, warm-up layers, and active lifestyle use.</p>
+                        </div>
+                        <div class="sportswear-cat">
+                            <h4>Tracksuits</h4>
+                            <p>Complete sporty outfits suitable for travel, teamwear, and branded collections.</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="detail-box">
@@ -469,7 +540,7 @@
                         <div class="detail-item">Oversized Fit</div>
                         <div class="detail-item">Compression Fit</div>
                     </div>
-                    <p style="margin:12px 0 0 0; line-height:1.8;">Available in Youth, Men&rsquo;s, Women&rsquo;s, and Plus Sizes.</p>
+                    <p style="margin:12px 0 0 0; line-height:1.8;">Available in Youth, Men’s, Women’s, and Plus Sizes.</p>
                 </div>
             </div>
         </div>
@@ -656,6 +727,7 @@
         let sIdx = 0;
         const slides = document.querySelectorAll('.slider-container .slide');
         setInterval(() => {
+            if (!slides.length) return;
             slides[sIdx].classList.remove('active');
             sIdx = (sIdx + 1) % slides.length;
             slides[sIdx].classList.add('active');
@@ -665,6 +737,7 @@
         let pIdx = 0;
         const pSlides = document.querySelectorAll('.prod-slide');
         function prodMove(dir) {
+            if (!pSlides.length) return;
             pSlides[pIdx].classList.remove('active');
             pIdx = (pIdx + dir + pSlides.length) % pSlides.length;
             pSlides[pIdx].classList.add('active');
@@ -701,6 +774,7 @@
             const existingMain = viewer.querySelectorAll('.sportswear-slide');
             existingMain.forEach(el => el.remove());
             thumbs.innerHTML = '';
+            swIdx = 0;
 
             sportswearImages.forEach((src, index) => {
                 const img = document.createElement('img');
@@ -738,6 +812,19 @@
             if (swTimer) clearInterval(swTimer);
             swTimer = setInterval(() => sportswearMove(1), 3000);
         }
+
+        document.addEventListener('keydown', (e) => {
+            const sportswearPage = document.getElementById('sportswear');
+            if (!sportswearPage || !sportswearPage.classList.contains('active')) return;
+
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                sportswearMove(-1);
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                sportswearMove(1);
+            }
+        });
 
         renderSportswearGallery();
         resetSportswearTimer();
